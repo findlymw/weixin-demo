@@ -16,7 +16,7 @@
   margin-right: 50rpx;
 }
 .exitView{
-  padding: 30rpx;
+  padding: 60rpx 0 60rpx 0;
 }
 .exitView button{
   width: 80%;
