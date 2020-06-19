@@ -1,13 +1,42 @@
 <!--index.wxml-->
 
 <view class="indexContainer">
-  <view class="baseInfo">
-    <image class="dark-bg" src="../../res/images/dark-bg.jpg"></image>
+  <view class="headView">
+    <image class="saoyisaoImg" src="../../res/images/saoyisao-dark.png"/>
     <image class="locationImage" src="../../res/images/location-light.png"></image>
     <view class="locationAddr">{{location}}</view>
-    <view class="weatherView">
-      <view class="weatherDataView"></view>
-    </view>
   </view>
-  <view class="infoContent"></view>
+  <scroll-view class="scroll-view-index"
+    scroll-y="true">
+    <view class="todayNumber">
+      <view>
+        今日限号(北京)
+      </view>
+      <view class="todayNumberView">
+        <text>5</text>
+        <text class="todayNumberSplit">0</text>
+      </view>
+    </view>
+    <scroll-view class="gasPriceList" scroll-x="true">
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+        <view>1</view>
+    </scroll-view>
+  </scroll-view>
 </view>

@@ -29,7 +29,7 @@ let wxTool = {
   authCheck: (wx,scope, callback) => {
     wx.getSetting({
       complete: (res) => {
-        if (res.authSetting[scope]){
+        if (res.authSetting && res.authSetting[scope]){
           callback(true);
         }else{
           callback(false);
