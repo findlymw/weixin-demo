@@ -1,0 +1,13 @@
+<!--index.wxml-->
+
+<view class="indexContainer">
+  <view class="baseInfo">
+    <image class="dark-bg" src="../../res/images/dark-bg.jpg"></image>
+    <image class="locationImage" src="../../res/images/location-light.png"></image>
+    <view class="locationAddr">{{location}}</view>
+    <view class="weatherView">
+      <view class="weatherDataView"></view>
+    </view>
+  </view>
+  <view class="infoContent"></view>
+</view>

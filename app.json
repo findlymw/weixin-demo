@@ -1,0 +1,62 @@
+{
+  "pages":[
+    "pages/loadingpage/loadingpage",
+    "pages/index/index",
+    "pages/news/news",
+    "pages/tools/tools",
+    "pages/my/my",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"@backgroundTextStyle",
+    "navigationBarBackgroundColor": "@navigationBarBackgroundColor",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"@navigationBarTextStyle",
+    "backgroundColorTop": "@backgroundColorTop",
+    "backgroundColorBottom": "@backgroundColorBottom",
+    "backgroundColor": "@backgroundColor"
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "permission":{
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于天气、邮件、限号等相关的位置服务"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+
+  "tabBar": {
+    "backgroundColor": "@tabBarBackgroundColor",
+    "borderStyle": "@tabBarborderStyle",
+    "color": "@tabBarTextColor",
+    "selectedColor": "@tabBarselectedColor",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "res/images/index-dark.png",
+      "selectedIconPath": "res/images/index-light.png"
+    },
+    {
+      "pagePath": "pages/news/news",
+      "text": "新闻",
+      "iconPath": "res/images/news-dark.png",
+      "selectedIconPath": "res/images/news-light.png"
+    },
+    {
+      "pagePath": "pages/tools/tools",
+      "text": "工具",
+      "iconPath": "res/images/tools-dark.png",
+      "selectedIconPath": "res/images/tools-light.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "我",
+      "iconPath": "res/images/my-dark.png",
+      "selectedIconPath": "res/images/my-light.png"
+    }]
+  }
+}

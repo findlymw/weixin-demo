@@ -1,0 +1,50 @@
+/* pages/loadingpage/loadingpage.wxss */
+page{
+  height: 100%;
+}
+
+.loadingPageContainer{
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+.loadingPageContainer .loadingPageLogoView{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loadingPageContainer image{
+  width: 300rpx;
+  height: 300rpx;
+}
+.loadingPageContainer text{
+  color: rgb(122, 120, 120);
+  font-size: 36rpx;
+  margin-bottom: 400rpx;
+}
+.footer{
+  font-size: 25rpx;
+  text-align: center;
+  padding-bottom: 150rpx;
+  color: #161616;
+}
+.loginAuthView {
+  margin-bottom: 100rpx;
+}
+@media (prefers-color-scheme: dark) {
+  .loadingPageContainer, .loadingPageLogoView{
+    background-color: rgb(46, 45, 45);
+  }
+  .loadingPageContainer text{
+    color: rgb(156, 154, 154);
+  }
+  .cLoadingExtClass{
+    background-color: rgb(46, 45, 45);
+  }
+  .footer{
+    color: #cacaca;
+  }
+}
