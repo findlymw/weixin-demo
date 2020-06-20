@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    userInfo:{},
+    apiToken:''
   },
 
   /**
@@ -15,7 +16,8 @@ Page({
   onLoad: function (options) {
     let app = getApp();
     this.setData({
-      userInfo: app.globalData.storageData.userInfo
+      userInfo: app.globalData.storageData.userInfo,
+      apiToken: app.globalData.storageData.apiToken
     });
     
   },

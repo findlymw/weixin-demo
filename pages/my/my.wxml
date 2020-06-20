@@ -5,7 +5,7 @@
       <image src="{{userInfo.avatarUrl}}"></image>
     </view>
     <view class="nickNameAndPostion">
-      <view>{{userInfo.nickName}}</view>
+      <view>{{userInfo.nickName}}-{{apiToken}}</view>
       <view>
         {{userInfo.city + 
         ' ' + userInfo.province + 

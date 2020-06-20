@@ -15,23 +15,6 @@ Page({
     let page = this;
     //通过userInfo的gender更改我的他bBar样式
     wxTool.changeTabBarItemFormGender(wx,app.globalData.storageData.userInfo.gender);
-    //判断apiToken是否存在
-    if(!app.globalData.storageData.apiToken){
-      // 通过userInfo进行登录
-      api.login(wx,app.globalData.storageData.userInfo,function(res){
-        wxTool.logDir('indexjs onLoad login res',res);
-        if(res && res.data && res.data.result){
-          app.globalData.storageData.apiToken = res.data.result;
-          wxTool.logDir('indexjs Onload Login success',res);
-          wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){});
-        }else{
-          wxTool.logDir('indexjs Onload Login fail',res);
-          wx.showToast({
-            title: '登录失败',
-          })
-        }
-      });
-    }
 
     //检查userlocation是否授权-start
     wxTool.authCheck(wx, wxTool.scopeArray.userLocation,function(res){
@@ -60,5 +43,34 @@ Page({
       }
     });
   //检查userlocation是否授权-end
+
+  //判断apiToken是否存在-start
+  if(!app.globalData.storageData.apiToken){
+    page.setData({
+      test:'in if'
+    });
+    // 通过userInfo进行登录-start
+    api.login(wx,app.globalData.storageData.userInfo,function(res){
+      wxTool.logDir('indexjs onLoad login res',res);
+      page.setData({
+        test: (page.data.test + JSON.stringify(res))
+      });
+      if(res && res.data && res.data.result){
+        app.globalData.storageData.apiToken = res.data.result;
+        wxTool.logDir('indexjs Onload Login success',res);
+        wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){});
+      }else{
+        wxTool.logDir('indexjs Onload Login fail',res);
+        wx.showToast({
+          title: '登录失败',
+        })
+      }
+    });
+    // 通过userInfo进行登录-end
+  }
+  //判断apiToken是否存在
+  },
+  onShow: function(){
+    
   }
 })

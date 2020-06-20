@@ -12,9 +12,11 @@ let api = {
       method: 'POST',
       data: data,
       success(res) {
+        res.urlPath = config.apiHost + '/wx/test/login';
         callback(res);
       },
       fail(res){
+        res.urlPath = config.apiHost + '/wx/test/login';
         callback(res);
       }
     })
