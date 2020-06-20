@@ -7,7 +7,9 @@ var storageData = {
   //访问api的token
   apiToken:'',
   //系统信息
-  systemInfo:{},
+  systemInfo:{
+    theme:'light'
+  },
   //网络类型
   networkType:'',
 }

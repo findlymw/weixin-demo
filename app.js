@@ -1,20 +1,24 @@
 //app.js
 'use strict';
-const apiObj = require('./utils/api.js');
 const config = require('./config.js');
 let storageData = require('./pages/model/storageData.js');
 const wxTool = require('./utils/wxTool.js');
 App({
-  api: apiObj,
   config: config,
-  onLaunch: function () {
+  initData: function(callback){
+    let app = this;
     //1.先到存储中获取存储的数据
     wx.getStorage({
       key: config.storageDataKey,
       success: (res) => {
         let _storageData = res.data;
-        if(!_storageData || !_storageData.systemInfo){
-          _storageData = storageData;
+        //保存在globalData中
+        app.globalData.storageData = _storageData;
+        wxTool.logDir('app.js storage storageData',app.globalData.storageData);
+        callback('init success');
+      },
+      fail:(res) => {
+        let _storageData = storageData;
           //获取系统信息
           _storageData.systemInfo = wx.getSystemInfoSync();
           //获取login code
@@ -27,26 +31,28 @@ App({
               _storageData.networkType = res;
               wxTool.log('Network Type',_storageData.networkType);
     
-              //将theme保存在globalData中
-              this.globalData.storageData = _storageData;
+              //保存在globalData中
+              app.globalData.storageData = _storageData;
               //保存对象到存储-start
-              wx.setStorageSync(config.storageDataKey, this.globalData.storageData);
-              wxTool.logDir('app.js init storageData to global',this.globalData.storageData);
+              wx.setStorageSync(config.storageDataKey, app.globalData.storageData);
+              wxTool.logDir('app.js init storageData to global',app.globalData.storageData);
               //保存对象到存储-end
+              callback('init success');
             });
             //获取Network类型-end
-            
           });
-        }else{
-          //将theme保存在globalData中
-          this.globalData.storageData = _storageData;
-          wxTool.logDir('app.js storage storageData',this.globalData.storageData);
-        }
       }
     });
-    
+  },
+  onLaunch: function () {
+    this.initData(function(){});
   },
   globalData: {
-    theme: 'light'
+  },
+  onHide: function(){
+    console.log('hide');
+  },
+  onShow: function(){
+    console.log('show');
   }
 })

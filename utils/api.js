@@ -7,14 +7,15 @@ let api = {
     console.log('Storage Key:',config.storageDataKey);
   },
   login: (wx, data, callback) => {
-
-    console.dir(data);
     wx.request({
       url: config.apiHost + '/wx/test/login',
       method: 'POST',
       data: data,
-      success: res => {
-        callback(res.data.result);
+      success(res) {
+        callback(res);
+      },
+      fail(res){
+        callback(res);
       }
     })
   },
