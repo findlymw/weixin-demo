@@ -17,16 +17,13 @@ Page({
     wxTool.log('loadingpagejs loginAuthHandle userinfo city',e.detail.userInfo.city);
     if (e.detail.userInfo.city){
       app.globalData.storageData.userInfo = e.detail.userInfo;
-      wx.setStorage({
-        data: app.globalData.storageData,
-        key: app.config.storageDataKey,
-        success: (res) => {
+      wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){
+        if(res){
           wxTool.logDir('loadingpagejs _login set storage success',res);
           wx.switchTab({
             url: '/pages/index/index',
           })
-        },
-        fail: (res) => {
+        }else{
           wxTool.logDir('loadingpagejs _login set storage fail',res);
         }
       });

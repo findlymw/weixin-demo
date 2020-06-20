@@ -111,6 +111,18 @@ let wxTool = {
       console.log('[DEBUG + Obj]' + util.formatTime(new Date()) + '-' + desc + ' : ' ); 
       console.dir(obj);
     }
+  },
+  saveStorage: function(wx,data,key,callback){
+    wx.setStorage({
+      data: data,
+      key: key,
+      success: (res) => {
+        callback(true);
+      },
+      fail: (res) => {
+        callback(false);
+      }
+    });
   }
 
 }
