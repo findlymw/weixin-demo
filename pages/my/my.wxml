@@ -5,7 +5,7 @@
       <image src="{{userInfo.avatarUrl}}"></image>
     </view>
     <view class="nickNameAndPostion">
-      <view>{{userInfo.nickName}}-{{apiToken}}</view>
+      <view>{{userInfo.nickName}}</view>
       <view>
         {{userInfo.city + 
         ' ' + userInfo.province + 
@@ -16,97 +16,28 @@
 
   <view class="infoSwitchView">
     <c-cells ext-class="infoSwitchCells" title="信息类开关">
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
+      <block wx:for="{{infosSwitch}}" wx:key="{{item.id+item.sort}}">
+        <c-cell>
+          <view><c-icon icon="tag" color="#666" size="{{20}}" />{{item.name}}</view>
+          <view slot="footer">
+            <switch checked="{{item.switch}}"  data-id="{{index}}" bindchange="changeInfosSwitchHandle"></switch>
+          </view>
+        </c-cell>
+      </block>
     </c-cells>
   </view>
 
 
   <view class="infoSwitchView">
     <c-cells ext-class="infoSwitchCells" title="工具类开关">
+    <block wx:for="{{toolsSwitch}}" wx:key="{{item.id + item.sort}}">
       <c-cell>
-        <view>标题文字使用slot</view>
+        <view><c-icon icon="tag" color="#666" size="{{20}}" />{{item.name}}</view>
         <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
+          <switch checked="{{item.switch}}" data-id="{{index}}" bindchange="changeToolsSwitchHandle"></switch>
         </view>
       </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
-
-      <c-cell>
-        <view>标题文字使用slot</view>
-        <view slot="footer">
-          <switch checked="{{false}}" bindchange="changeSwitchHandle"></switch>
-        </view>
-      </c-cell>
+    </block>
 
     </c-cells>
   </view>

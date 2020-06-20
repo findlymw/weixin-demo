@@ -18,10 +18,9 @@
 .exitView{
   padding: 60rpx 0 60rpx 0;
 }
-.exitView button{
-  width: 80%;
+c-icon{
+  margin-right: 10rpx;
 }
-
 @media (prefers-color-scheme: dark) {
   /* DarkMode 下的样式 start */
   .myProfile{

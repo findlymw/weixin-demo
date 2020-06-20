@@ -1,13 +1,29 @@
 // pages/my/my.js
+let wxTool = require('../../utils/wxTool.js');
 'use strict';
 Page({
-
+  changeInfosSwitchHandle: function(e){
+    getApp().globalData.storageData.infosSwitch[e.currentTarget.dataset.id].switch = 
+    !getApp().globalData.storageData.infosSwitch[e.currentTarget.dataset.id].switch;
+    this.data.infosSwitch = getApp().globalData.storageData.infosSwitch;
+    wxTool.saveStorage(wx,getApp().globalData.storageData,getApp().config.storageDataKey,function(res){});
+    console.dir(getApp().globalData.storageData);
+  },
+  changeToolsSwitchHandle: function(e){
+    getApp().globalData.storageData.toolsSwitch[e.currentTarget.dataset.id].switch = 
+    !getApp().globalData.storageData.toolsSwitch[e.currentTarget.dataset.id].switch;
+    this.data.toolsSwitch = getApp().globalData.storageData.toolsSwitch;
+    wxTool.saveStorage(wx,getApp().globalData.storageData,getApp().config.storageDataKey,function(res){});
+    console.dir(getApp().globalData.storageData);
+  },
   /**
    * 页面的初始数据
    */
   data: {
     userInfo:{},
-    apiToken:''
+    apiToken:'',
+    infosSwitch:[],
+    toolsSwitch:[]
   },
 
   /**
@@ -15,9 +31,12 @@ Page({
    */
   onLoad: function (options) {
     let app = getApp();
+    console.dir(app.globalData.storageData);
     this.setData({
       userInfo: app.globalData.storageData.userInfo,
-      apiToken: app.globalData.storageData.apiToken
+      apiToken: app.globalData.storageData.apiToken,
+      infosSwitch: app.globalData.storageData.infosSwitch,
+      toolsSwitch: app.globalData.storageData.toolsSwitch
     });
     
   },

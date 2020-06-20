@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "c-cell":"weui-miniprogram/cell/cell",
-    "c-cells":"weui-miniprogram/cells/cells"
+    "c-cells":"weui-miniprogram/cells/cells",
+    "c-icon":"weui-miniprogram/icon/icon"
   },
   "navigationBarTitleText": "我的"
 }
