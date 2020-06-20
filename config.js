@@ -1,7 +1,7 @@
 'use strict';
 
 const config = {
-    apiHost : "http://wx-api.jtoushou.cn",
+    apiHost : "https://wx-api.zhongyanyunlian.com",
     storageDataKey: 'storageDataKey',
     debug: true
 }
