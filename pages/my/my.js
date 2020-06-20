@@ -1,4 +1,5 @@
 // pages/my/my.js
+'use strict';
 let app = getApp();
 Page({
 
@@ -13,10 +14,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.dir(wx.getStorageSync('userInfo'));
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo')
-    });
+    wx.getStorage({
+      key: app.config.storageDataKey,
+      success: (res)=>{
+        this.setData({
+          userInfo: res.data.userInfo
+        });
+      }
+    })
+    
   },
 
   /**

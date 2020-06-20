@@ -1,4 +1,6 @@
 'use strict';
+const config = require('../config.js');
+const util = require('./util.js')
 /**
  * 微信登录授权管理类
  */
@@ -18,10 +20,10 @@ let wxTool = {
   },
   userInfo:{},
   // 获取loginCode
-  loginCode: () => {
+  loginCode: (wx, callback) => {
     wx.login({
       complete: (res) => {
-        return res.code;
+        callback(res.code);
       },
     });
   },
@@ -90,6 +92,25 @@ let wxTool = {
       tabBarItem.selectedIconPath = "/res/images/my-girl-light.png";
     }
     wx.setTabBarItem(tabBarItem);
+  },
+  networkType: (wx, callback) => {
+    wx.getNetworkType({
+      complete: (res) => {
+        // networkType: 'wifi'
+        callback(res.networkType ? res.networkType : 'Nothing');
+      }
+    });
+  },
+  log: (desc,obj) => {
+    if (config.debug){
+      console.log('[DEBUG - Str]' + util.formatTime(new Date()) + '-' + desc + ' : ' + obj);
+    }
+  },
+  logDir: (desc,obj) => {
+    if (config.debug){
+      console.log('[DEBUG + Obj]' + util.formatTime(new Date()) + '-' + desc + ' : ' ); 
+      console.dir(obj);
+    }
   }
 
 }

@@ -3,6 +3,7 @@
   <view class="loadingPageLogoView">
     <image src="/res/images/wx-logo01.png" />
     <text>MY TOOLS</text>
+    <text>{{ debuginfo }}</text>
   </view>
   <view class="loginAuthView">
   <button hidden="{{ loginAuthBtnShow }}" type="{{ theme == 'light'? 'primary':'default' }}"  open-type="getUserInfo" bindgetuserinfo="loginAuthHandle">登录授权</button>
