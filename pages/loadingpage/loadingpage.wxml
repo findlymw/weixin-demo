@@ -2,7 +2,7 @@
 <view class="loadingPageContainer">
   <view class="loadingPageLogoView">
     <image src="/res/images/wx-logo01.png" />
-    <text>MY TOOLS{{ debuginfo }}</text>
+    <text>MY TOOLS</text>
   </view>
   <view class="loginAuthView">
   <button hidden="{{ loginAuthBtnHide }}" type="{{ theme == 'light'? 'primary':'default' }}"  open-type="getUserInfo" bindgetuserinfo="loginAuthHandle">登录授权</button>
@@ -11,3 +11,5 @@
     Copyright © My Tools group
   </view>
 </view>
+
+<view class="timeBack" hidden="{{ timesCountHide }}" bindtap="skipTimesCount">跳过 {{ timesCount }}</view>

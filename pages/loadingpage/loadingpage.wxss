@@ -34,6 +34,17 @@ page{
 .loginAuthView {
   margin-bottom: 100rpx;
 }
+.timeBack{
+  position: absolute;
+  right: 30rpx;
+  top:200rpx;
+  border: 1px solid #999;
+  width:50px;
+  text-align: center;
+  padding: 5rpx 10rpx 5rpx 10rpx;
+  border-radius: 100rpx;
+}
+
 @media (prefers-color-scheme: dark) {
   .loadingPageContainer, .loadingPageLogoView{
     background-color: rgb(46, 45, 45);

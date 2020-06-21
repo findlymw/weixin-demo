@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
-<view class="indexContainer">
+<view hidden="{{ pageHide }}" class="indexContainer">
   <view class="headView">
     <image class="saoyisaoImg" src="../../res/images/saoyisao-dark.png"/>
     <image class="locationImage" src="../../res/images/location-light.png"></image>
@@ -10,7 +10,7 @@
     scroll-y="true">
     <view class="todayNumber">
       <view>
-        今日限号(北京)
+        今日限号(北京){{pageHide}}
       </view>
       <view class="todayNumberView">
         <text>5</text>

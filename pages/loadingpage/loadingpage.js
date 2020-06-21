@@ -9,7 +9,14 @@ Page({
   data: {
     // true: 需要授权并显示按钮，false 已经授权不需要显示按钮
     loginAuthBtnHide: true,
+    timesCount: getApp().config.skipTimes,
+    timesCountHide: true,
     theme: 'light'
+  },
+  skipTimesCount: function(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    });
   },
   loginAuthHandle: function(e) {
     let app = getApp();
@@ -39,9 +46,20 @@ Page({
     wxTool.authCheck(wx,wxTool.scopeArray.userInfo,function(res){
       // console.log('authcheck1:',res);
       if (res === true && app.globalData.storageData.userInfo.city) {
-        wx.switchTab({
-          url: '/pages/index/index',
-        })
+        if(page.data.loginAuthBtnHide){
+          let interval = setInterval(function(){
+            page.setData({
+              timesCount: page.data.timesCount - 1,
+              timesCountHide: false
+            });
+            if(page.data.timesCount <= 0){
+              clearInterval(interval);
+              wx.switchTab({
+                url: '/pages/index/index',
+              });
+            }
+          },1000);
+        }
       }else{
       // console.log('authcheck2:',res);
         page.setData({
