@@ -10,36 +10,55 @@
     scroll-y="true">
     <view class="todayNumber">
       <view>
-        今日限号(北京){{pageHide}}
+        今日限号(北京)
       </view>
+      
       <view class="todayNumberView">
-        <text>5</text>
-        <text class="todayNumberSplit">0</text>
+        <!--
+        <view hidden="true">
+          <text>5</text>
+          <text class="todayNumberSplit">0</text>
+        </view>
+        -->
+        <view>
+          <text class="noRestriction">{{restriction}}</text>
+        </view>
       </view>
     </view>
     <scroll-view class="gasPriceList" scroll-x="true">
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
-        <view>1</view>
+      <block wx:for="{{gasPriceList}}" wx:key="{{item.index}}">
+        <view class="pricesView">
+          <view class="priceCity">{{ item.city }}</view>
+          <view class="priceListText">
+            <text><text>92号：</text><text>{{item['92h']}}</text></text>
+            <text><text>95号：</text><text>{{item['95h']}}</text></text>
+            <text><text>98号：</text><text>{{item['98h']}}</text></text>
+            <text><text>0号：</text><text>{{item['0h']}}</text></text>
+          </view>
+        </view>
+      </block>
     </scroll-view>
 
-    <view style="color:red">{{test}}</view>
+    <view style="color:red">{{weather.realtime.temperature}}</view>
+    <view style="color:red">{{weather.realtime.info}}</view>
+    <view style="color:red">{{weather.realtime.wid}}</view>
+    <view style="color:red">{{weather.realtime.humidity}}</view>
+    <view style="color:red">{{weather.realtime.direct}}</view>
+    <view style="color:red">{{weather.realtime.power}}</view>
+    <view style="color:red">{{weather.realtime.aqi}}</view>
+    <block wx:for="{{weather.future}}">
+      <view style="color:red">{{item.date}}</view>
+      <view style="color:red">{{item.temperature}}</view>
+      <view style="color:red">{{item.weather}}</view>
+      <view style="color:red">{{item.direct}}</view>
+    </block>
+
+    <block wx:for="{{todayOnHistory}}">
+      <view style="color:red">{{item.day}}</view>
+      <view style="color:red">{{item.date}}</view>
+      <view style="color:red">{{item.title}}</view>
+      <view style="color:red">{{item.e_id}}</view>
+    </block>
 
   </scroll-view>
 </view>

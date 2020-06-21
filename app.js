@@ -1,6 +1,7 @@
 //app.js
 'use strict';
 const config = require('./config.js');
+const api = require('./utils/api.js');
 let storageData = require('./pages/model/storageData.js');
 const wxTool = require('./utils/wxTool.js');
 App({
