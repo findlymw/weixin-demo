@@ -22,23 +22,61 @@
       <view> <image class="oilNum" src="../../res/images/oil0.png" /> <text class="oilPriceText">¥{{gasPriceList[0]?gasPriceList[0]['0h']:'0.00'}}</text></view>
       <view class="oilMore"><c-icon icon="arrow" color="#ccc" size="{{15}}" bindtap="oilPriceHandle"></c-icon></view>
     </view>
+
+    <view class="otherContent"></view>
+
+    <view class="weatherView">
+      <view class="weatherContent">
+        <view class="weatherDetail">
+          <view class="powerAndH">
+            <view>{{weather.realtime.direct}} {{weather.realtime.power}} | 湿度 {{weather.realtime.humidity}}</view>
+          </view>
+          <view class="temAndWid">
+            <text class="tempText">{{weather.realtime.temperature}}</text>
+            <text class="wid">{{weather.realtime.wid}}</text>
+          </view>
+
+        </view>
+        <view class="weatheraqi"></view>
+        <view class="weatheraqi2" wx:if="{{weather.realtime.aqi < 35}}">优</view>
+        <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 35 && weather.realtime.aqi < 75}}">良</view>
+        <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 75 && weather.realtime.aqi < 115}}">轻度</view>
+        <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 115 && weather.realtime.aqi < 150}}">中度</view>
+        <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 150 && weather.realtime.aqi < 250}}">重度</view>
+        <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 250}}">严重</view>
+        <view class="weatheraqiGray" style="background-color:#3cc472" wx:if="{{weather.realtime.aqi < 35}}">优</view>
+        <view class="weatheraqiGray" style="background-color:#e6e61a" wx:if="{{weather.realtime.aqi >= 35 && weather.realtime.aqi < 75}}"></view>
+        <view class="weatheraqiGray" style="background-color:#c48d3c" wx:if="{{weather.realtime.aqi >= 75 && weather.realtime.aqi < 115}}"></view>
+        <view class="weatheraqiGray" style="background-color:#ff3300" wx:if="{{weather.realtime.aqi >= 115 && weather.realtime.aqi < 150}}"></view>
+        <view class="weatheraqiGray" style="background-color:#9966ff" wx:if="{{weather.realtime.aqi >= 150 && weather.realtime.aqi < 250}}"></view>
+        <view class="weatheraqiGray" style="background-color:#630404" wx:if="{{weather.realtime.aqi >= 250}}"></view>
+        <view class="weatheraqiWhite"><text>{{weather.realtime.aqi}}</text></view>
+
+
+        <view class="weatherDays">
+
+        <swiper indicator-dots="{{true}}"
+        autoplay="{{false}}">
+        <block wx:for="{{weather.future}}">
+          <swiper-item>
+            <view class="weatherFuture">
+              <view class="weatherData">{{item.date}}</view>
+              <view>{{item.temperature}}</view>
+              <view>{{item.weather}}</view>
+              <view>{{item.direct}}</view>
+            </view>
+          </swiper-item>
+          </block>
+      </swiper>
+
+
+        
+        </view>
+
+      </view>
+    </view>
+
     
-
-
-
-    <view style="color:red">{{weather.realtime.temperature}}</view>
-    <view style="color:red">{{weather.realtime.info}}</view>
-    <view style="color:red">{{weather.realtime.wid}}</view>
-    <view style="color:red">{{weather.realtime.humidity}}</view>
-    <view style="color:red">{{weather.realtime.direct}}</view>
-    <view style="color:red">{{weather.realtime.power}}</view>
-    <view style="color:red">{{weather.realtime.aqi}}</view>
-    <block wx:for="{{weather.future}}">
-      <view style="color:red">{{item.date}}</view>
-      <view style="color:red">{{item.temperature}}</view>
-      <view style="color:red">{{item.weather}}</view>
-      <view style="color:red">{{item.direct}}</view>
-    </block>
 
     <block wx:for="{{todayOnHistory}}">
       <view style="color:red">{{item.day}}</view>
