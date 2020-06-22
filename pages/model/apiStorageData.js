@@ -3,6 +3,7 @@ let apiStorageData = {
   gasPriceList:[],
   todayOnHistory:[],
   restriction: '',
-  weatherData: {}
+  weatherData: {},
+  jokes:[]
 };
 module.exports = apiStorageData;

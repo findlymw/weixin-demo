@@ -188,7 +188,7 @@ page{
 .todayOnHistoryTitle{
   flex:1;
   background-color: #fff;
-  color:#999;
+  color:rgb(72, 158, 228);
   font-size: 45rpx;
   padding-top:20rpx;
   padding-left:20rpx;
@@ -206,6 +206,29 @@ page{
   background-color: #fff;
 }
 
+.jokesView{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-top: 1px solid #efefef;
+}
+.jokesTitle{
+  color:rgb(72, 158, 228);
+  font-size: 45rpx;
+  padding-top:20rpx;
+  padding-left:20rpx;
+}
+rich-text{
+  color: #666;
+  margin: 20rpx;
+}
+.joketime{
+  color:#ccc;
+  margin:10rpx;
+  border-bottom: 1px solid #efefef;
+  font-size: 20rpx;
+  text-align: right;
+}
 
 
 

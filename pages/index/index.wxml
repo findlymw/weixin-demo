@@ -91,5 +91,13 @@
       </block>
     </view>
 
+    <view class="jokesView">
+      <view class="jokesTitle">最新笑话</view>
+      <block wx:for="{{jokes}}">
+        <rich-text nodes="{{item.content}}" ></rich-text>
+        <view class="joketime">{{item.updatetime}}</view>
+      </block>
+    </view>
+
   </scroll-view>
 </view>

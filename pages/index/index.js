@@ -15,6 +15,7 @@ Page({
     todayOnHistory:[],
     gasPriceList: [],
     restriction: '',
+    jokes:[],
     pageHide: true
 
   },
@@ -122,7 +123,8 @@ Page({
               gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
               restriction: res.restriction,
               todayOnHistory:res.todayOnHistory?[[
-                res.todayOnHistory[0],res.todayOnHistory[0],res.todayOnHistory[0]]]:[]
+                res.todayOnHistory[0],res.todayOnHistory[0],res.todayOnHistory[0]]]:[],
+              jokes: res.jokes  
             });
             page.setData({ pageHide: false });
             wx.hideLoading({complete: (res) => {} });
@@ -143,7 +145,8 @@ Page({
         page.setData({
           gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
           restriction: res.restriction,
-          todayOnHistory:res.todayOnHistory?[res.todayOnHistory[0]]:[]
+          todayOnHistory:res.todayOnHistory?[res.todayOnHistory[0]]:[],
+          jokes: res.jokes 
         });
         page.setData({ pageHide: false });
         wx.hideLoading({complete: (res) => {} });

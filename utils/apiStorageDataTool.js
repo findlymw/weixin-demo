@@ -58,10 +58,18 @@ let apiStorageDataTool = {
           }else{
             apiStorageData.todayOnHistory = [];
           }
-
-
-
-          callback(apiStorageData);
+          //最新笑话
+          api.api_joke_new_Handler(wx,apiToken,function(res){
+            wxTool.logDir('apiStorageDataTool 最新笑话 getIndexData api_joke_new_Handler',res);
+            if(res && res.code && res.code == 200 && res.result &&
+               res.result.result && res.result.result.data && res.result.result.data.length > 0){
+              apiStorageData.jokes = res.result.result.data;
+            }else{
+              apiStorageData.jokes = [];
+            }
+            wxTool.logDir('-=-=-=-=-=-=-apiStorageData',apiStorageData);
+            callback(apiStorageData);
+          });
         });
 
       });

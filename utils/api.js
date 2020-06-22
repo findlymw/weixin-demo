@@ -114,6 +114,16 @@ let api = {
         callback(res);
     });
   },
+  api_joke_new_Handler: function (wx,token,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/joke/content/text.php",
+        "page": config.jokePage,//	当前页数,默认1,最大20
+        "pagesize": config.jokeSize,//	每次返回条数,默认1,最大20
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+       callback(res);
+    });
+  },
 
 }
 
