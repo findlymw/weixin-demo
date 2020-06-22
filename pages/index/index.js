@@ -15,13 +15,17 @@ Page({
     todayOnHistory:[],
     gasPriceList: [],
     restriction: '',
-    pageHide: true,
-    test: 'xxx'
+    pageHide: true
 
   },
   oilPriceHandle: function(){
     wx.navigateTo({
       url: '/pages/oil/oil',
+    })
+  },
+  historyMoreHandle: function(){
+    wx.navigateTo({
+      url: '/pages/history/history',
     })
   },
   onLoad: function () {
@@ -93,6 +97,10 @@ Page({
   },
   onReady: function(){},
   onShow: function(){
+    wx.showLoading({
+      title: '加载中...',
+    });
+    wxTool.log('index page on show ...','showing');
     let app = getApp();
     let page = this;
     //通过userInfo的gender更改我的他bBar样式
@@ -100,9 +108,6 @@ Page({
 
     //判断apiToken是否存在-start
     if(!app.globalData.storageData.apiToken){
-      wx.showLoading({
-        title: '登录中...',
-      });
       // 通过userInfo进行登录-start
       api.login(wx,app.globalData.storageData.userInfo,function(res){
         wxTool.logDir('indexjs onLoad login res',res);
@@ -114,13 +119,13 @@ Page({
           apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
             wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
             page.setData({
-              gasPriceList: res.gasPriceList,
+              gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
               restriction: res.restriction,
-              todayOnHistory:res.todayOnHistory
+              todayOnHistory:res.todayOnHistory?[[
+                res.todayOnHistory[0],res.todayOnHistory[0],res.todayOnHistory[0]]]:[]
             });
-            wx.hideLoading({complete: (res) => {
-              page.setData({ pageHide: false });
-            } });
+            page.setData({ pageHide: false });
+            wx.hideLoading({complete: (res) => {} });
             getApp().globalData.storageData.gasPriceList = res.gasPriceList;
             wx.setStorage({
               data: getApp().globalData.storageData,
@@ -131,20 +136,16 @@ Page({
       });
       // 通过userInfo进行登录-end
     }else{
-      this.setData({
-        test: this.data.test += 'apiToken is exit|'
-      });
       //get api data
       apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
         wxTool.log('2++++++++++++++++++++++' + JSON.stringify(res));
         page.setData({
-          gasPriceList: res.gasPriceList,
+          gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
           restriction: res.restriction,
-          todayOnHistory:res.todayOnHistory
+          todayOnHistory:res.todayOnHistory?[res.todayOnHistory[0]]:[]
         });
-        wx.hideLoading({complete: (res) => {
-          page.setData({ pageHide: false });
-        } });
+        page.setData({ pageHide: false });
+        wx.hideLoading({complete: (res) => {} });
         getApp().globalData.storageData.gasPriceList = res.gasPriceList;
         wx.setStorage({
           data: getApp().globalData.storageData,

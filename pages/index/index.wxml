@@ -55,7 +55,7 @@
 
         <view class="weatherDays">
 
-        <swiper indicator-dots="{{true}}"
+        <swiper indicator-dots="{{true}}" circular="{{true}}" easing-function="easeInOutCubic"
         autoplay="{{false}}">
         <block wx:for="{{weather.future}}">
           <swiper-item>
@@ -76,16 +76,20 @@
       </view>
     </view>
 
-    
+    <!-- 历史上的今天 -->
+    <view class="todayOnHistoryView">
+      <view class="todayOnHistoryTitleView">
+        <view class="todayOnHistoryTitle">历史上的今天</view>
+        <view class="moremore" bindtap="historyMoreHandle">查看更多</view>
+      </view>
+      <block wx:for="{{todayOnHistory}}">
+        <view class="weatherFuture" data-eid="{{item.e_id}}">
+          <view class="weatherData">{{item.day}}</view>
+          <view>{{item.date}}</view>
+          <view>{{item.title}}</view>
+        </view>
+      </block>
+    </view>
 
-    <block wx:for="{{todayOnHistory}}">
-      <view style="color:red">{{item.day}}</view>
-      <view style="color:red">{{item.date}}</view>
-      <view style="color:red">{{item.title}}</view>
-      <view style="color:red">{{item.e_id}}</view>
-    </block>
-
-
-  <view>[{{ test }}]</view>
   </scroll-view>
 </view>

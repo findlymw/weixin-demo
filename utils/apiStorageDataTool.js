@@ -21,7 +21,7 @@ let apiStorageDataTool = {
   },
 
   getIndexData: (wx,apiToken,callback) => {
-    wxTool.log('get index data start');
+    wxTool.log('get index data start','getIndexData function');
     api.api_bjCarNumber_Handler(wx,apiToken,function(res){
       wxTool.logDir('apiStorageDataTool 北京限号 getIndexData api_bjCarNumber_Handler',res);
       if(res && res.statusCode && res.statusCode == 200 && res.data && res.data.result){

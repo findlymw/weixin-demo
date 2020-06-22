@@ -6,6 +6,7 @@
     "pages/tools/tools",
     "pages/my/my",
     "pages/oil/oil",
+    "pages/history/history",
     "pages/logs/logs"
   ],
   "window":{

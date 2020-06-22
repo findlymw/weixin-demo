@@ -82,7 +82,6 @@ page{
 }
 .weatherView{
   margin-top: 50rpx;
-  height: 470px;
   position: relative;
 }
 .weatherContent{
@@ -128,8 +127,8 @@ page{
 
 .weatheraqiWhite{
   background-color: #fff;
-  right:73rpx;
-  top:-65rpx;
+  right:74rpx;
+  top:-64rpx;
   width: 100rpx;
   height: 100rpx;
   color:#666;
@@ -180,7 +179,32 @@ page{
   padding-top: 24rpx;
 }
 
+.todayOnHistoryTitleView{
+  display: flex;
+  border-top: 1px solid #efefef;
+  align-items: center;
+}
 
+.todayOnHistoryTitle{
+  flex:1;
+  background-color: #fff;
+  color:#999;
+  font-size: 45rpx;
+  padding-top:20rpx;
+  padding-left:20rpx;
+}
+.moremore{
+  flex:1;
+  padding-top:20rpx;
+  color:#999;
+  padding-top:20rpx;
+  padding-right: 20rpx;
+  text-align: right;
+}
+.todayOnHistoryView{
+  height: 260rpx;
+  background-color: #fff;
+}
 
 
 
