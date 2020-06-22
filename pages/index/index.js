@@ -16,6 +16,7 @@ Page({
     gasPriceList: [],
     restriction: '',
     jokes:[],
+    xingzuo:{},
     pageHide: true
 
   },
@@ -117,14 +118,15 @@ Page({
           wxTool.logDir('indexjs Onload Login success',res);
           wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){});
           //get api data
-          apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
+          apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,'水瓶座','today',function(res){
             wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
             page.setData({
               gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
               restriction: res.restriction,
               todayOnHistory:res.todayOnHistory?[[
                 res.todayOnHistory[0],res.todayOnHistory[0],res.todayOnHistory[0]]]:[],
-              jokes: res.jokes  
+              jokes: res.jokes,
+              xingzuo: res.xingzuo  
             });
             page.setData({ pageHide: false });
             wx.hideLoading({complete: (res) => {} });
@@ -140,13 +142,14 @@ Page({
       // 通过userInfo进行登录-end
     }else{
       //get api data
-      apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
+      apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,'水瓶座','today',function(res){
         wxTool.log('2++++++++++++++++++++++' + JSON.stringify(res));
         page.setData({
           gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
           restriction: res.restriction,
           todayOnHistory:res.todayOnHistory?[res.todayOnHistory[0]]:[],
-          jokes: res.jokes 
+          jokes: res.jokes,
+          xingzuo: res.xingzuo
         });
         page.setData({ pageHide: false });
         wx.hideLoading({complete: (res) => {} });

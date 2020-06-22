@@ -29,7 +29,7 @@ let apiStorageDataTool = {
     });
   },
 
-  getIndexData: (wx,apiToken,callback) => {
+  getIndexData: (wx,apiToken,xingZuoName,xingZuoType,callback) => {
     wxTool.log('get index data start','getIndexData function');
     api.api_bjCarNumber_Handler(wx,apiToken,function(res){
       wxTool.logDir('apiStorageDataTool 北京限号 getIndexData api_bjCarNumber_Handler',res);
@@ -67,8 +67,19 @@ let apiStorageDataTool = {
             }else{
               apiStorageData.jokes = [];
             }
-            wxTool.logDir('-=-=-=-=-=-=-apiStorageData',apiStorageData);
-            callback(apiStorageData);
+
+            //星座
+            api.api_constellation_getAll_Handler(wx,apiToken,xingZuoName,xingZuoType,function(res){
+              wxTool.logDir('apiStorageDataTool 星座 getIndexData api_constellation_getAll_Handler',res);
+              if(res && res.code && res.code == 200 && res.result){
+               apiStorageData.xingzuo = res.result;
+             }else{
+               apiStorageData.xingzuo = {};
+             }
+              wxTool.logDir('-=-=-=-=-=-=-apiStorageData',apiStorageData);
+              callback(apiStorageData);
+            });
+           
           });
         });
 

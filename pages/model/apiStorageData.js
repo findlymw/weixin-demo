@@ -4,6 +4,7 @@ let apiStorageData = {
   todayOnHistory:[],
   restriction: '',
   weatherData: {},
-  jokes:[]
+  jokes:[],
+  xingzuo:{}
 };
 module.exports = apiStorageData;

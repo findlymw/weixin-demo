@@ -23,7 +23,9 @@
       <view class="oilMore"><c-icon icon="arrow" color="#ccc" size="{{15}}" bindtap="oilPriceHandle"></c-icon></view>
     </view>
 
-    <view class="otherContent"></view>
+    <view class="otherContent">
+      {{xingzuo.summary}}
+    </view>
 
     <view class="weatherView">
       <view class="weatherContent">

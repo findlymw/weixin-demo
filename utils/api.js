@@ -124,6 +124,16 @@ let api = {
        callback(res);
     });
   },
+  api_constellation_getAll_Handler: function (wx,token,name,type,callback) { //星座
+    let data = {
+        "url": "http://web.juhe.cn:8080/constellation/getAll",
+        "consName": name,//	星座名称，如:双鱼座
+        "type": type//运势类型：today,tomorrow,week,month,year
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
 
 }
 
