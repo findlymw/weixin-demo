@@ -8,11 +8,11 @@
   </view>
   <scroll-view class="scroll-view-index"
     scroll-y="true">
-    <view class="todayNumber">
+    <view hidden="{{!infosSwitch[0].switch}}" class="todayNumber">
       <view>今日限号(北京) </view>
       <view class="restrictionView">{{restriction}}</view>
     </view>
-    <view class="oilView">
+    <view hidden="{{!infosSwitch[1].switch}}" class="oilView">
       <view><image class="oillogo" src="../../res/images/oil.png"/></view>
       <view> <image class="oilNum" src="../../res/images/oil92.png" /> 
       <text class="oilPriceText">¥{{gasPriceList[0]?gasPriceList[0]['92h']:'0.00'}}</text>
@@ -23,11 +23,11 @@
       <view class="oilMore"><c-icon icon="arrow" color="#ccc" size="{{15}}" bindtap="oilPriceHandle"></c-icon></view>
     </view>
 
-    <view class="otherContent">
+    <view hidden="{{!infosSwitch[3].switch}}" class="otherContent">
       {{xingzuo.summary}}
     </view>
 
-    <view class="weatherView">
+    <view  hidden="{{!infosSwitch[4].switch}}" class="weatherView">
       <view class="weatherContent">
         <view class="weatherDetail">
           <view class="powerAndH">
@@ -79,7 +79,7 @@
     </view>
 
     <!-- 历史上的今天 -->
-    <view class="todayOnHistoryView">
+    <view hidden="{{!infosSwitch[2].switch}}" class="todayOnHistoryView">
       <view class="todayOnHistoryTitleView">
         <view class="todayOnHistoryTitle">历史上的今天</view>
         <view class="moremore" bindtap="historyMoreHandle">查看更多</view>
@@ -93,13 +93,12 @@
       </block>
     </view>
 
-    <view class="jokesView">
+    <view  hidden="{{!infosSwitch[5].switch}}" class="jokesView">
       <view class="jokesTitle">最新笑话</view>
       <block wx:for="{{jokes}}">
         <rich-text nodes="{{item.content}}" ></rich-text>
         <view class="joketime">{{item.updatetime}}</view>
       </block>
     </view>
-
   </scroll-view>
 </view>

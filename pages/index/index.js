@@ -3,6 +3,7 @@ let wxTool = require('../../utils/wxTool.js');
 let qqMapWX = require('../../utils/qqmap-wx-jssdk.js');
 let api = require('../../utils/api.js');
 let apiStorageDataTool = require('../../utils/apiStorageDataTool.js');
+let storageData = require('../model/storageData.js');
 let qqmap = new qqMapWX({
   key: getApp().config.qqMapKey
 });
@@ -17,7 +18,8 @@ Page({
     restriction: '',
     jokes:[],
     xingzuo:{},
-    pageHide: true
+    pageHide: true,
+    infosSwitch: storageData.infosSwitch
 
   },
   oilPriceHandle: function(){
@@ -31,6 +33,11 @@ Page({
     })
   },
   onLoad: function () {
+
+    this.setData({
+      infosSwitch: getApp().globalData.storageData.infosSwitch
+    });
+
     let page = this;
 
     //检查userlocation是否授权-start
@@ -99,6 +106,11 @@ Page({
   },
   onReady: function(){},
   onShow: function(){
+
+    this.setData({
+      infosSwitch: getApp().globalData.storageData.infosSwitch
+    });
+
     wx.showLoading({
       title: '加载中...',
     });
