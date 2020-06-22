@@ -42,29 +42,42 @@ page{
 
 .todayNumber{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-size: 30rpx;
   color: #efefef;
-  padding-top:30rpx;
   justify-content: center;
   align-items: center;
+  margin-top: 60rpx;
 }
-.todayNumberView{
-  color: #efefef;
-  font-size: 200rpx;
+.todayNumber .restrictionView{ margin-left: 30rpx; font-size: 60rpx; }
+.oilView{
+  display: flex;
+  justify-content: center;
+  margin-top: 30rpx;
 }
-.noRestriction{
-  font-size: 150rpx;
-  font-family: '微软雅黑';
+.oilView .oillogo{
+  width:120rpx;
+  height:120rpx;
+  display: inline-block;
 }
-.todayNumberView text{
-  padding-right: 30rpx;
+.oilView .oilNum{
+  display: inline-block;
+  width:120rpx;
+  height:120rpx;
 }
-.todayNumberSplit{
-  border-left: 1px dashed #ffffff;
-  padding-left: 30rpx;
-  padding-right: 0rpx;
+.oilPriceText{
+  position: relative;
+  top:-62rpx;
+  left:22rpx;
+  color:#ccc;
 }
+.oilMore{
+  width: 50prx;
+  display: flex;
+  align-items: center;
+  padding-right: 30rpx ;
+}
+
 
 .gasPriceList{
   white-space: nowrap;

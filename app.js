@@ -55,5 +55,6 @@ App({
   },
   onShow: function(){
     console.log('show');
+    this.initData(function(){});
   }
 })

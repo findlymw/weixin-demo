@@ -10,6 +10,8 @@ var storageData = {
   systemInfo:{
     theme:'light'
   },
+  //油价列表
+  gasPriceList:[],
   //网络类型
   networkType:'',
 

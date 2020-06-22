@@ -15,60 +15,16 @@ Page({
     todayOnHistory:[],
     gasPriceList: [],
     restriction: '',
-    pageHide: true
+    pageHide: true,
+    test: 'xxx'
 
+  },
+  oilPriceHandle: function(){
+    wx.navigateTo({
+      url: '/pages/oil/oil',
+    })
   },
   onLoad: function () {
-
-    wx.showLoading({
-      title: '登录中...',
-    })
-
-    let app = getApp();
-    let page = this;
-    //通过userInfo的gender更改我的他bBar样式
-    wxTool.changeTabBarItemFormGender(wx,app.globalData.storageData.userInfo.gender);
-
-  //判断apiToken是否存在-start
-  if(!app.globalData.storageData.apiToken){
-    // 通过userInfo进行登录-start
-    api.login(wx,app.globalData.storageData.userInfo,function(res){
-      wxTool.logDir('indexjs onLoad login res',res);
-      if(res && res.data && res.data.result){
-        app.globalData.storageData.apiToken = res.data.result;
-        wxTool.logDir('indexjs Onload Login success',res);
-        wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){});
-        //get api data
-        apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
-          wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
-          page.setData({
-            gasPriceList: res.gasPriceList,
-            restriction: res.restriction,
-            todayOnHistory:res.todayOnHistory
-          });
-        });
-      }
-    });
-    // 通过userInfo进行登录-end
-  }else{
-    //get api data
-    apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
-      wxTool.log('2++++++++++++++++++++++' + JSON.stringify(res));
-      page.setData({
-        gasPriceList: res.gasPriceList,
-        restriction: res.restriction,
-        todayOnHistory:res.todayOnHistory
-      });
-    });
-  }
-  //判断apiToken是否存在-end
-
-  
-  
-
-
-  },
-  onReady: function(){
     let page = this;
 
     //检查userlocation是否授权-start
@@ -134,8 +90,68 @@ Page({
   
 
 
-    wx.hideLoading({complete: (res) => {
-      this.setData({ pageHide: false });
-    } });
+  },
+  onReady: function(){},
+  onShow: function(){
+    let app = getApp();
+    let page = this;
+    //通过userInfo的gender更改我的他bBar样式
+    wxTool.changeTabBarItemFormGender(wx,app.globalData.storageData.userInfo.gender);
+
+    //判断apiToken是否存在-start
+    if(!app.globalData.storageData.apiToken){
+      wx.showLoading({
+        title: '登录中...',
+      });
+      // 通过userInfo进行登录-start
+      api.login(wx,app.globalData.storageData.userInfo,function(res){
+        wxTool.logDir('indexjs onLoad login res',res);
+        if(res && res.data && res.data.result){
+          app.globalData.storageData.apiToken = res.data.result;
+          wxTool.logDir('indexjs Onload Login success',res);
+          wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){});
+          //get api data
+          apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
+            wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
+            page.setData({
+              gasPriceList: res.gasPriceList,
+              restriction: res.restriction,
+              todayOnHistory:res.todayOnHistory
+            });
+            wx.hideLoading({complete: (res) => {
+              page.setData({ pageHide: false });
+            } });
+            getApp().globalData.storageData.gasPriceList = res.gasPriceList;
+            wx.setStorage({
+              data: getApp().globalData.storageData,
+              key: getApp().config.storageDataKey,
+            });
+          });
+        }
+      });
+      // 通过userInfo进行登录-end
+    }else{
+      this.setData({
+        test: this.data.test += 'apiToken is exit|'
+      });
+      //get api data
+      apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,function(res){
+        wxTool.log('2++++++++++++++++++++++' + JSON.stringify(res));
+        page.setData({
+          gasPriceList: res.gasPriceList,
+          restriction: res.restriction,
+          todayOnHistory:res.todayOnHistory
+        });
+        wx.hideLoading({complete: (res) => {
+          page.setData({ pageHide: false });
+        } });
+        getApp().globalData.storageData.gasPriceList = res.gasPriceList;
+        wx.setStorage({
+          data: getApp().globalData.storageData,
+          key: getApp().config.storageDataKey,
+        });
+      });
+    }
+    //判断apiToken是否存在-end
   }
 })

@@ -1,0 +1,29 @@
+<!--pages/oil/oil.wxml-->
+
+<view class="oilContainer">
+
+  <block wx:for="{{oilPrice}}">
+    <view class="oilBlock">
+        <view class="oilCity">{{ item.city }}</view>
+        <view class="oilList">
+          <view>
+            <image src="../../res/images/oil92.png"></image>
+            <text>¥ {{ item['92h'] }}</text>
+          </view>
+          <view>
+            <image src="../../res/images/oil95.png"></image>
+            <text>¥ {{ item['95h'] }}</text>
+          </view>
+          <view>
+            <image src="../../res/images/oil98.png"></image>
+            <text>¥ {{ item['98h'] }}</text>
+          </view>
+          <view>
+            <image src="../../res/images/oil0.png"></image>
+            <text>¥ {{ item['0h'] }}</text>
+          </view>
+        </view>
+      </view>
+  </block>
+
+</view>

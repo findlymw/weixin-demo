@@ -5,6 +5,7 @@
     "pages/news/news",
     "pages/tools/tools",
     "pages/my/my",
+    "pages/oil/oil",
     "pages/logs/logs"
   ],
   "window":{

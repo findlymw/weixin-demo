@@ -9,35 +9,22 @@
   <scroll-view class="scroll-view-index"
     scroll-y="true">
     <view class="todayNumber">
-      <view>
-        今日限号(北京)
-      </view>
-      
-      <view class="todayNumberView">
-        <!--
-        <view hidden="true">
-          <text>5</text>
-          <text class="todayNumberSplit">0</text>
-        </view>
-        -->
-        <view>
-          <text class="noRestriction">{{restriction}}</text>
-        </view>
-      </view>
+      <view>今日限号(北京) </view>
+      <view class="restrictionView">{{restriction}}</view>
     </view>
-    <scroll-view class="gasPriceList" scroll-x="true">
-      <block wx:for="{{gasPriceList}}" wx:key="{{item.index}}">
-        <view class="pricesView">
-          <view class="priceCity">{{ item.city }}</view>
-          <view class="priceListText">
-            <text><text>92号：</text><text>{{item['92h']}}</text></text>
-            <text><text>95号：</text><text>{{item['95h']}}</text></text>
-            <text><text>98号：</text><text>{{item['98h']}}</text></text>
-            <text><text>0号：</text><text>{{item['0h']}}</text></text>
-          </view>
-        </view>
-      </block>
-    </scroll-view>
+    <view class="oilView">
+      <view><image class="oillogo" src="../../res/images/oil.png"/></view>
+      <view> <image class="oilNum" src="../../res/images/oil92.png" /> 
+      <text class="oilPriceText">¥{{gasPriceList[0]?gasPriceList[0]['92h']:'0.00'}}</text>
+      </view>
+      <view> <image class="oilNum" src="../../res/images/oil95.png" /> <text class="oilPriceText">¥{{gasPriceList[0]?gasPriceList[0]['95h']:'0.00'}}</text></view>
+      <view> <image class="oilNum" src="../../res/images/oil98.png" /> <text class="oilPriceText">¥{{gasPriceList[0]?gasPriceList[0]['98h']:'0.00'}}</text></view>
+      <view> <image class="oilNum" src="../../res/images/oil0.png" /> <text class="oilPriceText">¥{{gasPriceList[0]?gasPriceList[0]['0h']:'0.00'}}</text></view>
+      <view class="oilMore"><c-icon icon="arrow" color="#ccc" size="{{15}}" bindtap="oilPriceHandle"></c-icon></view>
+    </view>
+    
+
+
 
     <view style="color:red">{{weather.realtime.temperature}}</view>
     <view style="color:red">{{weather.realtime.info}}</view>
@@ -60,5 +47,7 @@
       <view style="color:red">{{item.e_id}}</view>
     </block>
 
+
+  <view>[{{ test }}]</view>
   </scroll-view>
 </view>
