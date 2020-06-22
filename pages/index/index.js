@@ -127,6 +127,7 @@ Page({
             page.setData({ pageHide: false });
             wx.hideLoading({complete: (res) => {} });
             getApp().globalData.storageData.gasPriceList = res.gasPriceList;
+            getApp().globalData.storageData.todayOnHistory = res.todayOnHistory;
             wx.setStorage({
               data: getApp().globalData.storageData,
               key: getApp().config.storageDataKey,
@@ -147,6 +148,7 @@ Page({
         page.setData({ pageHide: false });
         wx.hideLoading({complete: (res) => {} });
         getApp().globalData.storageData.gasPriceList = res.gasPriceList;
+        getApp().globalData.storageData.todayOnHistory = res.todayOnHistory;
         wx.setStorage({
           data: getApp().globalData.storageData,
           key: getApp().config.storageDataKey,

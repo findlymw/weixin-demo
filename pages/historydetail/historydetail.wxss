@@ -1,0 +1,33 @@
+/* pages/historydetail/historydetail.wxss */
+.historyDetailContainer{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+.imageView{
+  width: 100%;
+  text-align: center;
+  height: 474rpx;
+}
+.historyDetailTitle{
+  font-size: 40rpx;
+  margin:0 0 20rpx 0;
+}
+image{
+  border-radius: 30rpx;
+}
+swiper{
+  height: 436rpx;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .historyDetailContainer{
+    background-color: rgb(22, 21, 21);
+    color: rgb(128, 128, 128);
+  }
+  /* DarkMode 下的样式 end */
+}

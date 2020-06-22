@@ -1,2 +1,14 @@
 <!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<view class="historyContainer">
+  <block wx:for="{{todayOnHistory}}">
+  <view class="historyItem"  data-eid="{{item.e_id}}" data-title="{{item.title}}" bindtap="historyDetailHandle">
+      <view class="historyItemFront">
+        <view class="historyDate">{{item.date}}</view>
+        <view class="historyTitle">{{item.title}}</view>
+      </view>
+      <view>
+        <c-icon icon="arrow" color="#666" size="{{16}}"/>
+      </view>
+  </view>
+  </block>
+</view>

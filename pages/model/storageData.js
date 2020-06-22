@@ -12,6 +12,8 @@ var storageData = {
   },
   //油价列表
   gasPriceList:[],
+  //历史上的今天
+  todayOnHistory:[],
   //网络类型
   networkType:'',
 

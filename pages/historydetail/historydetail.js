@@ -1,26 +1,37 @@
-// pages/history/history.js
+// pages/historydetail/historydetail.js
 let wxTool = require('../../utils/wxTool.js');
+let apiStorageDataTool = require('../../utils/apiStorageDataTool.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    todayOnHistory:[]
+    historyDetail:{}
   },
-  historyDetailHandle: function(e){
-    wxTool.log('historyjs historyDetailHandle eid', e.currentTarget.dataset.eid);
-    wx.navigateTo({
-      url: '/pages/historydetail/historydetail?eid='+e.currentTarget.dataset.eid+
-      '&title='+e.currentTarget.dataset.title,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      todayOnHistory: getApp().globalData.storageData.todayOnHistory
+    let page =  this;
+    wxTool.log('historydetail page onload options eid and title',options.eid + options.title);
+    wx.setNavigationBarTitle({
+      title: options.title,
+    });
+    apiStorageDataTool.getHistoryDetail(wx,getApp().globalData.storageData.apiToken,options.eid,function(res){
+      if(res && res.length > 0){
+        wxTool.logDir('history detail result > 0',res);
+        let detail = res[0];
+        page.setData({
+          historyDetail: detail
+        });
+      }else{
+        wxTool.logDir('history detail result = 0',res);
+        page.setData({
+          historyDetail: {}
+        });
+      }
     });
   },
 

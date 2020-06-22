@@ -6,7 +6,7 @@ let weatherTool = require('../utils/weatherhTool.js');
 
 let apiStorageDataTool = {
   
-  getWeatherFromCity: (wsx,apiToken,city,callback) => {
+  getWeatherFromCity: (wx,apiToken,city,callback) => {
     api.api_weather_query_Handler(wx,
       apiToken,
       city,
@@ -16,6 +16,15 @@ let apiStorageDataTool = {
       }else{
         callback(weatherTool.getWeaterDataFromWid(weatherTool.defaultData));
         
+      }
+    });
+  },
+  getHistoryDetail: (wx,apiToken,eid,callback) => {
+    api.api_todayOnhistory_queryDetail_Handler(wx,apiToken,eid,function(res){
+      if(res && res.code && res.code == 200 && res.result && res.result.result){
+        callback(res.result.result);
+      }else{
+        callback([]);
       }
     });
   },

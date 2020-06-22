@@ -1,0 +1,27 @@
+<!--pages/historydetail/historydetail.wxml-->
+<view class="historyDetailContainer">
+  <view class="historyDetailTitle">{{historyDetail.title}}</view>
+
+  
+  <block wx:if="{{historyDetail.picNo == 1}}">
+    <view class="imageView">
+      <image title="{{historyDetail.picUrl[0].pic_title}}" src="{{historyDetail.picUrl[0].url}}"></image>
+    </view>
+  </block>
+  <block wx:elif="{{historyDetail.picNo > 1}}">
+    <view class="imageView">
+      <swiper indicator-dots="{{true}}" circular="{{true}}" easing-function="easeInOutCubic"
+            autoplay="{{true}}">
+        <block wx:for="{{historyDetail.picUrl}}">
+          <swiper-item>
+            <view>
+              <image title="{{item.pic_title}}" src="{{item.url}}"></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </block>
+
+  <view>{{historyDetail.content}}</view>
+</view>

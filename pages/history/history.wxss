@@ -1,1 +1,42 @@
 /* pages/history/history.wxss */
+.historyContainer{
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+}
+.historyItem{
+  flex:1;
+  background-color: #fff;
+  margin: 20rpx 20rpx 20rpx 20rpx;
+  border-radius: 6rpx;
+  height: 100rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.historyItemFront{
+  flex: 1;
+}
+.historyDate{
+  color: #999;
+  font-size: 35rpx;
+}
+
+.historyTitle{
+  color: #999;
+  font-size:25rpx;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .historyContainer{
+    background-color: rgb(22, 21, 21);
+    color: rgb(128, 128, 128);
+  }
+  .historyItem{
+    background-color: #2E2D2D;
+  }
+  /* DarkMode 下的样式 end */
+}
