@@ -6,6 +6,17 @@ let weatherTool = require('../utils/weatherhTool.js');
 
 let apiStorageDataTool = {
   
+  getProductByBarCode: (wx,token,barcode,callback) => {
+    wxTool.log('scan api:','token:'+token+'barcode:'+barcode);
+    api.api_product_query(wx,token,barcode,function(res){
+      if(res){
+        wxTool.logDir('barcode',res);
+        callback(res);
+      }else{
+        callback(null);
+      }
+    });
+  },
   getWeatherFromCity: (wx,apiToken,city,callback) => {
     wxTool.log('api 天气预报 city',city);
     api.api_weather_query_Handler(wx,

@@ -8,7 +8,7 @@ const config = {
     skipTimes:3,
     jokePage:1,
     jokeSize:5,
-    debug: true
+    debug: false
 }
 
 module.exports = config;

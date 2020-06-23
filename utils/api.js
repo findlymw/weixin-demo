@@ -142,6 +142,23 @@ let api = {
         callback(res);
     });
   },
+  api_product_query:function (wx,token,barcode,callback) {
+    let that = this;
+    wx.request({
+        url: config.apiHost + '/wx/test/queryBarcodeinfo?barcode='+barcode,
+        method: 'POST',
+        header: {
+            "Authorization": token
+        },
+        success: function (res) {
+            callback(res);
+        },
+        fail(res){
+          callback(null);
+        }
+
+    })
+  }
 
 }
 

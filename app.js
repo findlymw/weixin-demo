@@ -54,6 +54,17 @@ App({
     console.log('hide');
   },
   onShow: function(){
+    const updateManager = wx.getUpdateManager();
+    updateManager.onUpdateReady(function(){
+      wx.showModal({
+        content: '新版本下载完成，是否立即重启',
+        success(res){
+          if (res.confirm) {
+            updateManager.applyUpdate();
+          }
+        }
+      })
+    });
     console.log('show');
     this.initData(function(){});
   }

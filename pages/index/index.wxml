@@ -2,7 +2,7 @@
 
 <view hidden="{{ pageHide }}" class="indexContainer">
   <view class="headView">
-    <image class="saoyisaoImg" src="../../res/images/saoyisao-dark.png"/>
+    <image class="saoyisaoImg" src="../../res/images/saoyisao-dark.png" bindtap="scanCodeHandle"/>
     <image class="locationImage" src="../../res/images/location-light.png"></image>
     <view class="locationAddr">{{location}}</view>
   </view>
@@ -112,4 +112,10 @@
       </block>
     </view>
   </scroll-view>
+
+
+    <c-dialog title="扫描提示" show="{{showScanResultDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '确定'}]}}">
+        <view>{{ scanResult }}</view>
+    </c-dialog>
+
 </view>

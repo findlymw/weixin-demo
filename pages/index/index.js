@@ -21,8 +21,29 @@ Page({
     xingzuo:{},
     pageHide: true,
     constellation:{},
+    showScanResultDialog: false,
+    scanResult:'',
     infosSwitch: storageData.infosSwitch
 
+  },
+  tapDialogButton: function(){
+    this.setData({
+        showScanResultDialog: false,
+        scanResult: ''
+    });
+  },
+  scanCodeHandle: function(){
+    let page = this;
+    wx.scanCode({
+      onlyFromCamera: true,
+      success(res){
+        wxTool.logDir('扫码结果',res);
+        page.setData({
+          showScanResultDialog: true,
+          scanResult: res.result
+        });
+      }
+    })
   },
   oilPriceHandle: function(){
     wx.navigateTo({
