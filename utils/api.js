@@ -124,6 +124,14 @@ let api = {
        callback(res);
     });
   },
+  api_joke_random_Handler: function (wx,token,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/joke/randJoke.php",
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+      callback(res);
+    });
+  },
   api_constellation_getAll_Handler: function (wx,token,name,type,callback) { //星座
     let data = {
         "url": "http://web.juhe.cn:8080/constellation/getAll",

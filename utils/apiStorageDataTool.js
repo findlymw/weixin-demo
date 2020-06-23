@@ -7,6 +7,7 @@ let weatherTool = require('../utils/weatherhTool.js');
 let apiStorageDataTool = {
   
   getWeatherFromCity: (wx,apiToken,city,callback) => {
+    wxTool.log('api 天气预报 city',city);
     api.api_weather_query_Handler(wx,
       apiToken,
       city,
@@ -58,15 +59,17 @@ let apiStorageDataTool = {
           }else{
             apiStorageData.todayOnHistory = [];
           }
-          //最新笑话
-          api.api_joke_new_Handler(wx,apiToken,function(res){
-            wxTool.logDir('apiStorageDataTool 最新笑话 getIndexData api_joke_new_Handler',res);
+          //随机笑话
+          api.api_joke_random_Handler(wx,apiToken,function(res){
+            wxTool.logDir('apiStorageDataTool 随机笑话 getIndexData api_joke_random_Handler',res);
             if(res && res.code && res.code == 200 && res.result &&
-               res.result.result && res.result.result.data && res.result.result.data.length > 0){
-              apiStorageData.jokes = res.result.result.data;
+               res.result.result && res.result.result.length > 0){
+              apiStorageData.jokes = res.result.result;
             }else{
               apiStorageData.jokes = [];
             }
+
+
 
             //星座
             api.api_constellation_getAll_Handler(wx,apiToken,xingZuoName,xingZuoType,function(res){

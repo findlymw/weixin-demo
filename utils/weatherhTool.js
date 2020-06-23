@@ -1,7 +1,7 @@
 let weatherhTool = {
 
   defaultData:{
-    "realtime":{"wid":"01","temperature":"30","direct":"南风","aqi":"70","humidity":"46","power":"3级","info":"多云"},"city":"北京","future":[{"date":"2020-06-21","wid":{"night":"00","day":"00"},"temperature":"25/35℃","weather":"晴","direct":"南风"},{"date":"2020-06-22","wid":{"night":"01","day":"01"},"temperature":"24/34℃","weather":"多云","direct":"南风转东南风"},{"date":"2020-06-23","wid":{"night":"01","day":"02"},"temperature":"22/33℃","weather":"阴转多云","direct":"东南风"},{"date":"2020-06-24","wid":{"night":"01","day":"01"},"temperature":"22/33℃","weather":"多云","direct":"东南风"},{"date":"2020-06-25","wid":{"night":"04","day":"01"},"temperature":"21/35℃","weather":"多云转雷阵雨","direct":"西南风转东风"}]},
+    "realtime":{"wid":"01","temperature":"-0","direct":"南风","aqi":"70","humidity":"46","power":"3级","info":"多云"},"city":"北京","future":[{"date":"2020-06-21","wid":{"night":"00","day":"00"},"temperature":"25/35℃","weather":"晴","direct":"南风"},{"date":"2020-06-22","wid":{"night":"01","day":"01"},"temperature":"24/34℃","weather":"多云","direct":"南风转东南风"},{"date":"2020-06-23","wid":{"night":"01","day":"02"},"temperature":"22/33℃","weather":"阴转多云","direct":"东南风"},{"date":"2020-06-24","wid":{"night":"01","day":"01"},"temperature":"22/33℃","weather":"多云","direct":"东南风"},{"date":"2020-06-25","wid":{"night":"04","day":"01"},"temperature":"21/35℃","weather":"多云转雷阵雨","direct":"西南风转东风"}]},
     getWeaterDataFromWid: (data) => {
       if(data.realtime && data.realtime.wid){
         data.realtime.wid = weatherhTool.wid['wid'+data.realtime.wid];

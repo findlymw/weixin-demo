@@ -94,7 +94,7 @@
     </view>
 
     <view  hidden="{{!infosSwitch[5].switch}}" class="jokesView">
-      <view class="jokesTitle">最新笑话</view>
+      <view class="jokesTitle">随便几个笑话</view>
       <block wx:for="{{jokes}}">
         <rich-text nodes="{{item.content}}" ></rich-text>
         <view class="joketime">{{item.updatetime}}</view>

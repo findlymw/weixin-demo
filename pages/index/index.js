@@ -32,14 +32,48 @@ Page({
       url: '/pages/history/history',
     })
   },
-  onLoad: function () {
-
-    this.setData({
-      infosSwitch: getApp().globalData.storageData.infosSwitch
+  _getWeatherData(page){
+    //获取天气
+    apiStorageDataTool.getWeatherFromCity(wx,
+      getApp().globalData.storageData.apiToken
+      ,page.data.weatherCity,
+      function(res){
+      wxTool.logDir('indexjs 天气情况 onReady from network ',res);
+      page.setData({
+        weather: res
+      });
     });
-
-    let page = this;
-
+  },
+  onLoad: function () {
+  //从api获取wid的数据和city的数据（已经静态化处理，不用执行）
+  //api.api_weather_wids_Handler(wx,getApp().globalData.storageData.apiToken,wxTool);
+  //api.api_weather_city_Handler(wx,getApp().globalData.storageData.apiToken,wxTool);
+  },
+  onReady: function(){},
+  _getApiData(page){
+    //get api data start
+    apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,'水瓶座','today',function(res){
+      wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
+      page.setData({
+        gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
+        restriction: res.restriction,
+        todayOnHistory:res.todayOnHistory?[
+          res.todayOnHistory[0]]:[],
+        jokes: res.jokes,
+        xingzuo: res.xingzuo  
+      });
+      page.setData({ pageHide: false });
+      wx.hideLoading({complete: (res) => {} });
+      getApp().globalData.storageData.gasPriceList = res.gasPriceList;
+      getApp().globalData.storageData.todayOnHistory = res.todayOnHistory;
+      wx.setStorage({
+        data: getApp().globalData.storageData,
+        key: getApp().config.storageDataKey,
+      });
+    });
+    // get api data end
+  },
+  _checkUserLocation(page){
     //检查userlocation是否授权-start
   wxTool.authCheck(wx, wxTool.scopeArray.userLocation,function(res){
     if (res){
@@ -50,18 +84,11 @@ Page({
             city = res.result.address_component.city.replace('区','')
             page.setData({
               location: res.result.address_component.city+'.'+res.result.address_component.district,
-              weatherCity: city
+              weatherCity: city?city.replace('市',''):"北京"
             });
-            //获取天气
-            apiStorageDataTool.getWeatherFromCity(wx,
-              getApp().globalData.storageData.apiToken
-              ,page.data.weatherCity,
-              function(res){
-              wxTool.logDir('indexjs 天气情况 onReady from network ',res);
-              page.setData({
-                weather: res
-              });
-            });
+            
+            page._getWeatherData(page);
+
             wxTool.logDir('indexjs onLoad reverse location res',res);
             wxTool.log('indexjs onLoad reverse location:',page.data.location);
           });
@@ -75,18 +102,10 @@ Page({
             city = res.result.address_component.city.replace('区','')
             page.setData({
               location: res.result.address_component.city+'.'+res.result.address_component.district,
-              weatherCity: city
+              weatherCity: city?city.replace('市',''):"北京"
             });
             //获取天气
-            apiStorageDataTool.getWeatherFromCity(wx,
-              getApp().globalData.storageData.apiToken
-              ,page.data.weatherCity,
-              function(res){
-              wxTool.logDir('indexjs 天气情况 onReady from storage ',res);
-              page.setData({
-                weather: res
-              });
-            });
+            page._getWeatherData(page);
             wxTool.logDir('indexjs onLoad reverse location res',res);
             wxTool.log('indexjs onLoad reverse location:',page.data.location);
           });
@@ -95,28 +114,17 @@ Page({
     }
   });
 //检查userlocation是否授权-end
-
-
-  //从api获取wid的数据和city的数据（已经静态化处理，不用执行）
-  //api.api_weather_wids_Handler(wx,getApp().globalData.storageData.apiToken,wxTool);
-  //api.api_weather_city_Handler(wx,getApp().globalData.storageData.apiToken,wxTool);
-  
-
-
   },
-  onReady: function(){},
   onShow: function(){
-
-    this.setData({
-      infosSwitch: getApp().globalData.storageData.infosSwitch
-    });
-
-    wx.showLoading({
-      title: '加载中...',
-    });
     wxTool.log('index page on show ...','showing');
     let app = getApp();
     let page = this;
+    this.setData({
+      infosSwitch: getApp().globalData.storageData.infosSwitch
+    });
+    wx.showLoading({
+      title: '加载中...',
+    });
     //通过userInfo的gender更改我的他bBar样式
     wxTool.changeTabBarItemFormGender(wx,app.globalData.storageData.userInfo.gender);
 
@@ -129,49 +137,14 @@ Page({
           app.globalData.storageData.apiToken = res.data.result;
           wxTool.logDir('indexjs Onload Login success',res);
           wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){});
-          //get api data
-          apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,'水瓶座','today',function(res){
-            wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
-            page.setData({
-              gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
-              restriction: res.restriction,
-              todayOnHistory:res.todayOnHistory?[[
-                res.todayOnHistory[0],res.todayOnHistory[0],res.todayOnHistory[0]]]:[],
-              jokes: res.jokes,
-              xingzuo: res.xingzuo  
-            });
-            page.setData({ pageHide: false });
-            wx.hideLoading({complete: (res) => {} });
-            getApp().globalData.storageData.gasPriceList = res.gasPriceList;
-            getApp().globalData.storageData.todayOnHistory = res.todayOnHistory;
-            wx.setStorage({
-              data: getApp().globalData.storageData,
-              key: getApp().config.storageDataKey,
-            });
-          });
+          page._getApiData(page);
+          page._checkUserLocation(page);
         }
       });
       // 通过userInfo进行登录-end
     }else{
-      //get api data
-      apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,'水瓶座','today',function(res){
-        wxTool.log('2++++++++++++++++++++++' + JSON.stringify(res));
-        page.setData({
-          gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
-          restriction: res.restriction,
-          todayOnHistory:res.todayOnHistory?[res.todayOnHistory[0]]:[],
-          jokes: res.jokes,
-          xingzuo: res.xingzuo
-        });
-        page.setData({ pageHide: false });
-        wx.hideLoading({complete: (res) => {} });
-        getApp().globalData.storageData.gasPriceList = res.gasPriceList;
-        getApp().globalData.storageData.todayOnHistory = res.todayOnHistory;
-        wx.setStorage({
-          data: getApp().globalData.storageData,
-          key: getApp().config.storageDataKey,
-        });
-      });
+      page._getApiData(page);
+      page._checkUserLocation(page);
     }
     //判断apiToken是否存在-end
   }
