@@ -4,6 +4,7 @@ let qqMapWX = require('../../utils/qqmap-wx-jssdk.js');
 let api = require('../../utils/api.js');
 let apiStorageDataTool = require('../../utils/apiStorageDataTool.js');
 let storageData = require('../model/storageData.js');
+const { constellation } = require('../model/storageData.js');
 let qqmap = new qqMapWX({
   key: getApp().config.qqMapKey
 });
@@ -19,12 +20,18 @@ Page({
     jokes:[],
     xingzuo:{},
     pageHide: true,
+    constellation:{},
     infosSwitch: storageData.infosSwitch
 
   },
   oilPriceHandle: function(){
     wx.navigateTo({
       url: '/pages/oil/oil',
+    })
+  },
+  chooseConstellationHandle: function(){
+    wx.navigateTo({
+      url: '/pages/constellation/constellation',
     })
   },
   historyMoreHandle: function(){
@@ -52,7 +59,8 @@ Page({
   onReady: function(){},
   _getApiData(page){
     //get api data start
-    apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,'水瓶座','today',function(res){
+    apiStorageDataTool.getIndexData(wx,getApp().globalData.storageData.apiToken,
+    getApp().globalData.storageData.userInfo.constellation?getApp().globalData.storageData.userInfo.constellation.name:'水瓶座','today',function(res){
       wxTool.log('1++++++++++++++++++++++' + JSON.stringify(res));
       page.setData({
         gasPriceList: res.gasPriceList?[res.gasPriceList[0]]:[],
@@ -120,7 +128,8 @@ Page({
     let app = getApp();
     let page = this;
     this.setData({
-      infosSwitch: getApp().globalData.storageData.infosSwitch
+      infosSwitch: getApp().globalData.storageData.infosSwitch,
+      constellation: getApp().globalData.storageData.userInfo.constellation?getApp().globalData.storageData.userInfo.constellation:getApp().globalData.storageData.constellation[11]
     });
     wx.showLoading({
       title: '加载中...',

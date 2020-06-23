@@ -42,9 +42,10 @@
     </c-cells>
   </view>
 
+<!--
   <view class="exitView">
     <button type="warn">退出</button>
   </view>
-  
+ --> 
 
 </view>

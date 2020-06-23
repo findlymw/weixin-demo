@@ -23,8 +23,19 @@
       <view class="oilMore"><c-icon icon="arrow" color="#ccc" size="{{15}}" bindtap="oilPriceHandle"></c-icon></view>
     </view>
 
-    <view hidden="{{!infosSwitch[3].switch}}" class="otherContent">
-      {{xingzuo.summary}}
+    <view class="otherContent" bindtap="chooseConstellationHandle">
+      <view hidden="{{!infosSwitch[3].switch}}">
+        <view class="constellationView">
+          <image src="{{constellation.image}}"></image>
+          <text>{{constellation.flag}}</text>
+          <text>{{constellation.name}}</text>
+          <text>{{constellation.english}}</text>
+          <text>{{constellation.dateLimit}}</text>
+        </view>
+        <view class="xingzuoSummary">
+          {{xingzuo.summary}}
+        </view>
+      </view>
     </view>
 
     <view  hidden="{{!infosSwitch[4].switch}}" class="weatherView">

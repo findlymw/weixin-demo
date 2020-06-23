@@ -1,0 +1,12 @@
+<!--pages/constellation/constellation.wxml-->
+<view class="constellationContainer">
+  <block wx:for="{{constellation}}">
+    <view class="consBlock" data-cid="{{item.id}}" bindtap="chooseConstellationHandle">
+      <image src="{{item.image}}"></image>
+      <text>{{item.flag}}</text>
+      <text>{{item.name}}</text>
+      <text>{{item.englist}}</text>
+      <text>{{item.dateLimit}}</text>
+    </view>
+  </block>
+</view>

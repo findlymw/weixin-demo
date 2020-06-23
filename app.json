@@ -8,7 +8,7 @@
     "pages/oil/oil",
     "pages/history/history",
     "pages/historydetail/historydetail",
-    "pages/logs/logs"
+    "pages/constellation/constellation"
   ],
   "window":{
     "backgroundTextStyle":"@backgroundTextStyle",

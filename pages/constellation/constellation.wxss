@@ -1,0 +1,25 @@
+/* pages/constellation/constellation.wxss */
+.constellationContainer{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5rpx;
+  justify-content: center;
+  padding-top: 65rpx;
+}
+.consBlock{
+  width: 190rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #666;
+  font-size: 27rpx;
+  align-items: center;
+  margin: 10rpx;
+  border:1px solid #ccc;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+.consBlock image{
+  width: 76rpx;
+  height:76rpx;
+}

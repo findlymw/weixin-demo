@@ -80,6 +80,23 @@ page{
 .otherContent{
   height: 500rpx;
 }
+.constellationView{
+  display: flex;
+  align-items: center;
+  padding:20rpx;
+  color: #efefef;
+}
+.constellationView text{margin-left:20rpx;}
+.xingzuoSummary{
+  padding:0 30rpx 0 50rpx;
+  color:#efefef;
+}
+.constellationView image{
+  width:76rpx;
+  height:58rpx;
+}
+
+
 .weatherView{
   margin-top: 50rpx;
   position: relative;

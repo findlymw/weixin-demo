@@ -1,2 +1,4 @@
 <!--pages/news/news.wxml-->
-<text>pages/news/news.wxml</text>
+<view class="newsContainer">
+  <text>暂未开放</text>
+</view>
