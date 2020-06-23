@@ -1,4 +1,4 @@
 <!--pages/tools/tools.wxml-->
 <view class="toolsContainer">
-  <text>暂未开放</text>
+  <text>工具</text>
 </view>

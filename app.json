@@ -2,7 +2,7 @@
   "pages":[
     "pages/loadingpage/loadingpage",
     "pages/index/index",
-    "pages/news/news",
+    "pages/constellationall/constellationall",
     "pages/tools/tools",
     "pages/my/my",
     "pages/oil/oil",
@@ -44,10 +44,10 @@
       "selectedIconPath": "res/images/index-light.png"
     },
     {
-      "pagePath": "pages/news/news",
-      "text": "新闻",
-      "iconPath": "res/images/news-dark.png",
-      "selectedIconPath": "res/images/news-light.png"
+      "pagePath": "pages/constellationall/constellationall",
+      "text": "星座",
+      "iconPath": "res/images/star-dark.png",
+      "selectedIconPath": "res/images/star-light.png"
     },
     {
       "pagePath": "pages/tools/tools",

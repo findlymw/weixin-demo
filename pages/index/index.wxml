@@ -70,7 +70,7 @@
 
         <swiper indicator-dots="{{true}}" circular="{{true}}" easing-function="easeInOutCubic"
         autoplay="{{false}}">
-        <block wx:for="{{weather.future}}">
+        <block wx:for="{{weather.future}}" wx:key="weatherIndex">
           <swiper-item>
             <view class="weatherFuture">
               <view class="weatherData">{{item.date}}</view>
@@ -95,7 +95,7 @@
         <view class="todayOnHistoryTitle">历史上的今天</view>
         <view class="moremore" bindtap="historyMoreHandle">查看更多</view>
       </view>
-      <block wx:for="{{todayOnHistory}}">
+      <block wx:for="{{todayOnHistory}}" wx:key="todayOnHistoryIndex">
         <view class="weatherFuture" data-eid="{{item.e_id}}">
           <view class="weatherData">{{item.day}}</view>
           <view>{{item.date}}</view>
@@ -106,7 +106,7 @@
 
     <view  hidden="{{!infosSwitch[5].switch}}" class="jokesView">
       <view class="jokesTitle">随便几个笑话</view>
-      <block wx:for="{{jokes}}">
+      <block wx:for="{{jokes}}" wx:key="jokeIndex">
         <rich-text nodes="{{item.content}}" ></rich-text>
         <view class="joketime">{{item.updatetime}}</view>
       </block>
