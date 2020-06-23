@@ -93,7 +93,7 @@ page{
 }
 .constellationView image{
   width:76rpx;
-  height:58rpx;
+  height:76rpx;
 }
 
 
