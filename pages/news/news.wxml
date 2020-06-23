@@ -1,4 +1,5 @@
 <!--pages/news/news.wxml-->
 <view class="newsContainer">
   <text>暂未开放</text>
+  <web-view src="https://baidu.com"></web-view>
 </view>
