@@ -1,4 +1,12 @@
 <!--pages/tools/tools.wxml-->
 <view class="toolsContainer">
-  <text>工具</text>
+  <block wx:for="{{toolsSwitch}}" wx:key="toolsSwitchIndex">
+  <view wx:if="{{ item.switch }}" class="toolsView" data-toolsID="{{item.id}}" 
+  data-name="{{item.name}}" bindtap="toolsTapHandle">
+    <c-icon icon="{{ item.icon?item.icon:'help' }}" color="#ddcc66" size="{{20}}"/>
+     <view>{{item.name}}</view>
+     <c-icon icon="arrow" color="#ccc" size="{{20}}"/>
+  </view>
+   
+  </block>
 </view>

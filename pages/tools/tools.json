@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "c-icon": "weui-miniprogram/icon/icon"
+  },
   "navigationBarTitleText": "查询工具"
 }

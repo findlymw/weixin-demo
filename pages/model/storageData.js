@@ -28,13 +28,13 @@ var storageData = {
     { id:5,name: '笑话大全',switch: true,sort: 5 }
   ],
   toolsSwitch:[
-    { id:0,name: '周公解梦',switch: true,sort: 0 },
-    { id:1,name: '邮编查询',switch: true,sort: 1 },
-    { id:2,name: '简/繁/火星字转换',switch: true,sort: 2 },
-    { id:3,name: '成语词典',type: '2',switch: true,sort: 3 },
-    { id:4,name: '汇率',switch: true,sort: 4 },
-    { id:5,name: '彩票开奖结果查询',switch: true,sort: 5 },
-    { id:6,name: '手机号码归属地',switch: true,sort: 6 }
+    { id:0,name: '周公解梦',switch: true,sort: 0,icon: 'help' },
+    { id:1,name: '邮编查询',switch: true,sort: 1 ,icon: 'info' },
+    { id:2,name: '简/繁/火星字转换',switch: true,sort: 2 ,icon: 'transfer-text' },
+    { id:3,name: '成语词典',type: '2',switch: true,sort: 3,icon: 'search'  },
+    { id:4,name: '汇率',switch: true,sort: 4,icon: 'bellring-on'  },
+    { id:5,name: '彩票开奖结果查询',switch: true,sort: 5,icon: 'mosaic'  },
+    { id:6,name: '手机号码归属地',switch: true,sort: 6,icon: 'mobile-contacts'  }
   ],
   newsType:[
     { id:0,name:"头条",paramName:"top",sort:0 },

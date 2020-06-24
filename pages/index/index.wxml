@@ -57,7 +57,7 @@
         <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 115 && weather.realtime.aqi < 150}}">中度</view>
         <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 150 && weather.realtime.aqi < 250}}">重度</view>
         <view class="weatheraqi2" wx:if="{{weather.realtime.aqi >= 250}}">严重</view>
-        <view class="weatheraqiGray" style="background-color:#3cc472" wx:if="{{weather.realtime.aqi < 35}}">优</view>
+        <view class="weatheraqiGray" style="background-color:#3cc472" wx:if="{{weather.realtime.aqi < 35}}"></view>
         <view class="weatheraqiGray" style="background-color:#e6e61a" wx:if="{{weather.realtime.aqi >= 35 && weather.realtime.aqi < 75}}"></view>
         <view class="weatheraqiGray" style="background-color:#c48d3c" wx:if="{{weather.realtime.aqi >= 75 && weather.realtime.aqi < 115}}"></view>
         <view class="weatheraqiGray" style="background-color:#ff3300" wx:if="{{weather.realtime.aqi >= 115 && weather.realtime.aqi < 150}}"></view>

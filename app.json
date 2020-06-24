@@ -10,6 +10,19 @@
     "pages/historydetail/historydetail",
     "pages/constellation/constellation"
   ],
+  "subPackages":[
+    {
+      "root": "toolspackage",
+      "name": "toolspackage",
+      "pages":["pages/toolsall/toolsall"]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["toolspackage"]
+    }
+  },
   "window":{
     "backgroundTextStyle":"@backgroundTextStyle",
     "navigationBarBackgroundColor": "@navigationBarBackgroundColor",

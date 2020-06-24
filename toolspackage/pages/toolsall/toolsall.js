@@ -1,27 +1,23 @@
-// pages/tools/tools.js
-let wxTool = require('../../utils/wxTool.js');
+// toolspackage/pages/toolsall/toolsall.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    toolsSwitch:[]
+    id:0
   },
-  toolsTapHandle: function(e){
-    wxTool.logDir('tools tap handle',e);
-    wxTool.log('tools tap handle toolsid',e.currentTarget.dataset.toolsid);
-    wx.navigateTo({
-      url: '/toolspackage/pages/toolsall/toolsall?id='
-      +e.currentTarget.dataset.toolsid + '&name='
-      +e.currentTarget.dataset.name,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: options.name,
+    })
+    this.setData({
+      id:options.id
+    });
   },
 
   /**
@@ -35,9 +31,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      toolsSwitch: getApp().globalData.storageData.toolsSwitch
-    });
+
   },
 
   /**

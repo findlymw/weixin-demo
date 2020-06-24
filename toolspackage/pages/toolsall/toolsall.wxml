@@ -1,0 +1,2 @@
+<!--toolspackage/pages/toolsall/toolsall.wxml-->
+<text>{{id}}</text>
