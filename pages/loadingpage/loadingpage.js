@@ -25,6 +25,7 @@ Page({
         wxTool.logDir('loadingpagejs loginAuthHandle userinfo',e.detail.userInfo);
         if (e.detail.userInfo){
           app.globalData.storageData.userInfo = e.detail.userInfo;
+          app.globalData.storageData.userInfo.constellation = app.globalData.storageData.constellation[10];
           wxTool.saveStorage(wx,app.globalData.storageData,app.config.storageDataKey,function(res){
             if(res){
               wxTool.logDir('loadingpagejs _login set storage success',res);

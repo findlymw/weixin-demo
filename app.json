@@ -18,11 +18,12 @@
     }
   ],
   "preloadRule": {
-    "pages/index/index": {
+    "pages/loadingpage/loadingpage": {
       "network": "all",
       "packages": ["toolspackage"]
     }
   },
+  "lazyCodeLoading": "requiredComponents",
   "window":{
     "backgroundTextStyle":"@backgroundTextStyle",
     "navigationBarBackgroundColor": "@navigationBarBackgroundColor",

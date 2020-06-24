@@ -158,7 +158,27 @@ let api = {
         }
 
     })
-  }
+  },
+  api_dream_query_Handler: function (wx,token,content,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/dream/query",
+        "q": content, //梦境关键字，如：黄金 需要utf8 urlencode
+        "full": 1 //	是否显示详细信息，1:是 0:否，默认
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
+  api_charconvert_change_Handler: function (wx,token,content,contentType,callback) {
+    let data = {
+        "url": "http://japi.juhe.cn/charconvert/change.from",
+        "text": content,
+        "type": contentType,//需要转换成的类型。0：简体 1：繁体 2：火星文
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
 
 }
 

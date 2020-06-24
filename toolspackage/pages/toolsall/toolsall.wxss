@@ -1,1 +1,75 @@
 /* toolspackage/pages/toolsall/toolsall.wxss */
+.toolsDetailContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.singleInputView{
+  display: flex;
+  flex-direction: column;
+  margin: 50rpx;
+}
+input{
+  width: 644rpx;
+  padding:30rpx;
+  font-size:32rpx;
+  border-radius: 100rpx;
+  margin: 0 8rpx 0 0;
+  background-color: #efefef;
+  box-shadow: 1px 1px 3px #ccc;
+}
+.dreamTitle{
+  background-color: #efefef;
+  font-size: 38rpx;
+  padding: 10rpx 0 10rpx 30rpx;
+  margin-top: 60rpx;
+  border-bottom: 1px dashed #cacaca;
+}
+
+.dreamList{
+  padding: 20rpx;
+  background-color: #efefef;
+}
+.noResultView{
+  font-size: 35rpx;
+  margin-top: 50rpx;
+}
+
+radio-group{
+  display: flex;
+  border-bottom:1px solid #efefef;
+  border-top:1px solid #efefef;
+  border-radius: 30rpx;
+  margin: 30rpx 0 0 0;
+  justify-content: space-evenly;
+}
+.huoxingtip{
+  color:#efefef;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  input{
+    box-shadow: 0px 0px 0px #ccc;
+    background-color: #2E2D2D;
+    border: 1px solid #333;
+  }
+  .dreamTitle{
+    background-color: #2E2D2D;
+    border-bottom: 1px dashed #333;
+  }
+  
+  .dreamList{
+    background-color: #2E2D2D;
+  }
+  radio-group{
+    border-bottom:1px solid #333;
+    border-top:1px solid #333;
+  }
+  .huoxingtip{
+    color:#6e6c6c;
+    padding:30rpx;
+  }
+  
+  /* DarkMode 下的样式 end */
+}

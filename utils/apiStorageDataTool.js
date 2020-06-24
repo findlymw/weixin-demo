@@ -6,6 +6,21 @@ let weatherTool = require('../utils/weatherhTool.js');
 
 let apiStorageDataTool = {
   
+  api_dream_query_Handler: (wx,token,content,callback)=>{
+    api.api_dream_query_Handler(wx,token,content,function(res){
+      if(res){
+        wxTool.logDir('content',content);
+        if(res && res.code && res.code == 200 && res.result &&
+            res.result.result && res.result.result.length > 0
+          )
+        wxTool.logDir('dream success',res);
+        callback(res.result.result);
+      }else{
+        wxTool.logDir('dream fail',res);
+        callback(null);
+      }
+    });
+  },
   getProductByBarCode: (wx,token,barcode,callback) => {
     wxTool.log('scan api:','token:'+token+'barcode:'+barcode);
     api.api_product_query(wx,token,barcode,function(res){

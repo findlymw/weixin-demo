@@ -1,2 +1,35 @@
 <!--toolspackage/pages/toolsall/toolsall.wxml-->
-<text>{{id}}</text>
+<view class="toolsDetailContainer" data-weui-theme="dark">
+  <view class="singleInputView">
+      <view wx:if="{{id == 2}}">
+        <input value="{{inputValue}}" placeholder="{{placeholder}}" bindinput="huoxingInputHandle"></input>
+      </view>
+      <radio-group wx:if="{{id == 2}}" bindchange="radioChangeHandle">
+            <label class="weui-cell weui-check__label" wx:for="{{huoxingItems}}" wx:key="huoxingItemValue" >
+              <view class="weui-cell__hd">
+                <radio value="{{item.value}}" checked="{{item.checked}}"/>
+              </view>
+              <view class="weui-cell__bd">{{item.name}}</view>
+            </label>
+      </radio-group>
+      <view class="huoxingtip" wx:if="{{id==2}}">转换内容长按复制：</view>
+      <view wx:if="{{id == 0}}">
+        <input confirm-type="go" bindconfirm="bindconfirmHandle" value="{{inputValue}}" placeholder="{{placeholder}}"></input>
+      </view>
+  </view>
+  <view wx:if="{{dreamData.length > 0 && id == 0}}">
+    <block wx:for="{{dreamData}}" wx:key="dreamDataIndex">
+      <view class="dreamTitle">🌟 {{item.title}}</view>
+      <view class="dreamList" wx:for="{{item.list}}" wx:for-item="subItem" wx:key="itemListIndex">
+        <view>{{subItem}}</view>
+      </view>
+    </block>
+  </view>
+
+
+  <view class="noResultView" wx:if="{{queryResult.length > 0}}">
+  <c-select-text
+    show-copy-btn 
+   value="{{queryResult}}"></c-select-text>
+  </view>
+</view>

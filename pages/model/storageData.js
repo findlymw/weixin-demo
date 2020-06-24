@@ -33,20 +33,7 @@ var storageData = {
     { id:2,name: '简/繁/火星字转换',switch: true,sort: 2 ,icon: 'transfer-text' },
     { id:3,name: '成语词典',type: '2',switch: true,sort: 3,icon: 'search'  },
     { id:4,name: '汇率',switch: true,sort: 4,icon: 'bellring-on'  },
-    { id:5,name: '彩票开奖结果查询',switch: true,sort: 5,icon: 'mosaic'  },
-    { id:6,name: '手机号码归属地',switch: true,sort: 6,icon: 'mobile-contacts'  }
-  ],
-  newsType:[
-    { id:0,name:"头条",paramName:"top",sort:0 },
-    { id:1,name:"社会",paramName:"shehui",sort:1 },
-    { id:2,name:"国内",paramName:"guonei",sort:2 },
-    { id:3,name:"国际",paramName:"guoji",sort:3 },
-    { id:4,name:"娱乐",paramName:"yule",sort:4 },
-    { id:5,name:"体育",paramName:"tiyu",sort:5 },
-    { id:6,name:"军事",paramName:"junshi",sort:6 },
-    { id:7,name:"科技",paramName:"keji",sort:7 },
-    { id:8,name:"财经",paramName:"caijing",sort:8 },
-    { id:9,name:"时尚",paramName:"shishang",sort:9 }
+    { id:5,name: '手机号码归属地',switch: true,sort: 6,icon: 'mobile-contacts'  }
   ],
   constellation:[
     {

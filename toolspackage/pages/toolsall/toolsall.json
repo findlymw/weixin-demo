@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "c-icon": "weui-miniprogram/icon/icon",
+    "c-select-text": "../components/select-text/select-text"
+  }
 }
