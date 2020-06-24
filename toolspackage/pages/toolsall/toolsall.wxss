@@ -70,6 +70,15 @@ radio-group{
     color:#6e6c6c;
     padding:30rpx;
   }
+  .resultAllView{
+    margin:50rpx;
+    padding:0 20rpx 0 20rpx;
+    display: flex;
+    flex-direction: column;
+  }
+  .resultAllView view{
+    margin-bottom: 30rpx;
+  }
   
   /* DarkMode 下的样式 end */
 }

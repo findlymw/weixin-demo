@@ -179,6 +179,25 @@ let api = {
         callback(res);
     });
   },
+  api_chengyu_query_Handler: function (wx,token,content,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/chengyu/query",
+        "word": content,
+        "dtype": "json"
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
+  api_mobile_get_Handler:function (wx,token,content,callback) {
+    let data = {
+        "url": "http://apis.juhe.cn/mobile/get",
+        "phone":content
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
 
 }
 

@@ -13,7 +13,7 @@
             </label>
       </radio-group>
       <view class="huoxingtip" wx:if="{{id==2}}">转换内容长按复制：</view>
-      <view wx:if="{{id == 0}}">
+      <view wx:if="{{id == 0 || id == 3 || id == 5}}">
         <input confirm-type="go" bindconfirm="bindconfirmHandle" value="{{inputValue}}" placeholder="{{placeholder}}"></input>
       </view>
   </view>
@@ -32,4 +32,29 @@
     show-copy-btn 
    value="{{queryResult}}"></c-select-text>
   </view>
+
+  <!--成语词典结果-->
+  <view class="resultAllView" wx:if="{{id == 3 && chengyuObj.chengyujs}}">
+    <view>首字部首：{{chengyuObj.bushou?chengyuObj.bushou:'暂无'}}</view>
+    <view>成语词头：{{chengyuObj.head?chengyuObj.head:'暂无'}}</view>
+    <view>成语拼音：{{chengyuObj.pinyin?chengyuObj.pinyin:'暂无'}}</view>
+    <view>成语解释：{{chengyuObj.chengyujs?chengyuObj.chengyujs:'暂无'}}</view>
+    <view>成语出处：{{chengyuObj.from_?chengyuObj.from_:'暂无'}}</view>
+    <view>成语举例：{{chengyuObj.example?chengyuObj.example:'暂无'}}</view>
+    <view>成语语法：{{chengyuObj.yufa?chengyuObj.yufa:'暂无'}}</view>
+    <view>词语解释：{{chengyuObj.ciyujs?chengyuObj.ciyujs:'暂无'}}</view>
+    <view>引证解释：{{chengyuObj.yinzhengjs?chengyuObj.yinzhengjs:'暂无'}}</view> 
+    <view>同义词：{{chengyuObj.tongyi?chengyuObj.tongyi:'暂无'}}</view> 
+    <view>反义词：{{chengyuObj.fanyi?chengyuObj.fanyi:'暂无'}}</view>
+  </view>
+  <!--手机归属地查询结果-->
+  <view class="resultAllView" wx:if="{{id == 5 && mobileObj.company}}">
+    <view>区号：{{mobileObj.areacode?mobileObj.areacode:'暂无'}}</view>
+    <view>省份：{{mobileObj.province?mobileObj.province:'暂无'}}</view>
+    <view>城市：{{mobileObj.city?mobileObj.city:'暂无'}}</view>
+    <view>公司：{{mobileObj.company?mobileObj.company:'暂无'}}</view>
+    <view>邮编：{{mobileObj.zip?mobileObj.zip:'暂无'}}</view>
+    <view>card：{{mobileObj.card?mobileObj.card:'暂无'}}</view>
+  </view>
+
 </view>

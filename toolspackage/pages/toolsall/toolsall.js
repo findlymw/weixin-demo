@@ -18,7 +18,9 @@ Page({
       {value: '2', name: '火星文',checked: false},
       {value: '1', name: '繁体' ,checked: false},
       {value: '0', name: '简体',checked: false}
-    ]
+    ],
+    chengyuObj:{},
+    mobileObj:{}
   },
   huoxingInputHandle: function(e){
     this.data.inputValue = e.detail.value;
@@ -67,12 +69,31 @@ Page({
 
     //邮编查询
     if(this.data.id == 1){
-
+      
     }
     
     //成语词典
     if(this.data.id == 3){
+      wxTool.log('成语词典查询日志',e.detail.value);
+      if(e.detail.value){
+        api.api_chengyu_query_Handler(wx,apiToken,e.detail.value,function(res){
+          wxTool.logDir('成语词典 api res', res);
+          if(res && res.code == 200 && res.result && res.result.result){
+            page.setData({
+              chengyuObj: res.result.result,
+              queryResult:''
+            });
+          }else{
+            page.setData({
+              inputValue: '',
+              chengyuObj:{},
+              queryResult: res.result.reason
+            });
+          }
+        });
+      }else{
 
+      }
     }
     //汇率
     if(this.data.id == 4){
@@ -80,7 +101,27 @@ Page({
     }
     //手机号
     if(this.data.id == 5){
+      wxTool.log('手机号归属地查询日志',e.detail.value);
+      if(e.detail.value){
+        api.api_mobile_get_Handler(wx,apiToken,e.detail.value,function(res){
+          wxTool.logDir('手机归属地查询 api res', res);
+          if(res && res.code == 200 && res.result && res.result.result){
+            page.setData({
+              mobileObj: res.result.result,
+              queryResult:'',
 
+            });
+          }else{
+            page.setData({
+              inputValue: '',
+              mobileObj:{},
+              queryResult: res.result.reason
+            });
+          }
+        });
+      }else{
+
+      }
     }
 
     
@@ -107,6 +148,21 @@ Page({
         inputValue: ''
       });
     }
+    //成语词典
+    if(this.data.id == 3){
+      this.setData({
+        placeholder:'请输入要查询的成语',
+        inputValue: ''
+      });
+    }
+    //手机号码归属地
+    if(this.data.id == 5){
+      this.setData({
+        placeholder:'请输入要查询的手机号',
+        inputValue: ''
+      });
+    }
+
   },
 
   /**
