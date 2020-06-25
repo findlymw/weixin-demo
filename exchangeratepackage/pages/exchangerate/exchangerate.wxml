@@ -1,2 +1,73 @@
 <!--exchangeratepackage/pages/exchangerate/exchangerate.wxml-->
-<text>exchangeratepackage/pages/exchangerate/exchangerate.wxml</text>
+<view class="exchangeContainer">
+<view class="exchangeRateTitle">实时汇率转换</view>
+<view class="exchangeRateBlock">
+  <view>
+    <picker mode="selector" data-picker="1" bindchange="bindPickerChange" 
+    value="{{index1}}" range="{{exchangeList}}"
+    >
+      <view class="picker">
+        当前选择：{{objectExchangeList[index1].name}}
+      </view>
+    </picker>
+  </view>
+  <view>VS</view>
+  <view>
+    <picker mode="selector" data-picker="2" bindchange="bindPickerChange" 
+    value="{{index2}}" range="{{exchangeList}}"
+    >
+      <view class="picker">
+        当前选择：{{objectExchangeList[index2].name}}
+      </view>
+    </picker>
+  </view>
+</view>
+
+
+<view class="vsResultView">
+  <!--
+    "currencyF": "JPY", /*货币代码*/
+    "currencyF_Name": "日元", /*货币名称*/
+    "currencyT": "BHD", /*货币代码*/
+    "currencyT_Name": "巴林第纳尔", /*货币名称*/
+    "currencyFD": 1,
+    "exchange": "0.0032685972", /*当前汇率*/
+    "result": "0.0032",/*当前汇率*/
+    "updateTime": "2014-11-07 13:58:02"
+  -->
+    <block wx:for="{{vsResult}}" wx:key="vsResultKey">
+      <view class="vsResultBlock">
+        <view>货币代码:{{item.currencyF_Name?item.currencyF_Name:''}} {{item.currencyF?item.currencyF:''}}</view>
+        <view>货币代码:{{item.currencyT_Name?item.currencyT_Name:''}} {{item.currencyT?item.currencyT:''}}</view>
+        <view>货币数量:{{item.currencyFD?item.currencyFD:'暂无'}}</view>
+        <view>当前汇率:{{item.exchange?item.exchange:'暂无'}}</view>
+        <view>当前汇率:{{item.result?item.result:'暂无'}}</view>
+        <view>更新时间:{{item.updateTime?item.updateTime:'暂无'}}</view>
+      </view>
+    </block>
+    
+  </view>
+
+
+
+  <view class="genExchangeRateContainer">
+    <view class="genExchangeRateTitle">常用汇率</view>
+      <view class="genExchangeRateBlock" wx:for="{{genExchangeRateList}}" wx:key="genExchangeRateKey">
+        <!--
+        "美元", /*货币名称*/
+        "100", /*交易单位*/
+        "665.63", /*现汇买入价*/
+        "660.3", /*现钞买入价*/
+        "668.3", /*现钞卖出价*/
+        "666.69" /*中行折算价*/
+
+        -->
+        <view>货币名称：{{item[0]}}</view>
+        <view>交易单位：{{item[1]}}</view>
+        <view>现汇买入价：{{item[2]}}</view>
+        <view>现钞买入价：{{item[3]}}</view>
+        <view>现钞卖出价：{{item[4]}}</view>
+        <view>中行折算价：{{item[5]}}</view>
+      </view>
+  </view>
+</view>

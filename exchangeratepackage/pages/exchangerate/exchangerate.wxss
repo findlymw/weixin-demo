@@ -1,1 +1,54 @@
 /* exchangeratepackage/pages/exchangerate/exchangerate.wxss */
+.exchangeContainer{
+  display: flex;
+  flex-direction: column;
+  color: #666;
+}
+
+.genExchangeRateTitle,.exchangeRateTitle{
+  font-size: 45rpx;
+  border-bottom: 1px solid #efefef;
+  padding: 25rpx;
+}
+.exchangeRateBlock{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30rpx;
+  border-bottom: 1px solid #efefef;
+}
+
+.genExchangeRateBlock{
+  margin: 20rpx 0 0 0;
+  border-bottom: 1px solid #efefef;
+  font-size: 35rpx;
+  padding: 25rpx;
+}
+.vsResultView{
+  font-size: 35rpx;
+  margin: 30rpx 0 60rpx 0;
+}
+.vsResultBlock{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .exchangeContainer{
+    color: #666;
+  }
+  .genExchangeRateTitle,.exchangeRateTitle,.genExchangeRateBlock,.exchangeRateBlock{
+    border-bottom: 1px solid #333;
+  }
+  .genExchangeRateContainer,
+  .vsResultView,
+  .exchangeRateBlock,
+  .genExchangeRateBlock,
+  .genExchangeRateTitle,
+  .exchangeRateTitle{
+    background-color: #2E2D2D;
+  }
+  
+  /* DarkMode 下的样式 end */
+}

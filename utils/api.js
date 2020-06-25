@@ -246,6 +246,25 @@ let api = {
         callback(res);
     });
   },
+  api_onebox_exchange_query_Handler: function (wx,token,callback) {
+    let data = {
+        "url": "http://op.juhe.cn/onebox/exchange/query",
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+       callback(res);
+    });
+  },
+  api_onebox_exchange_currency_Handler: function (wx,token,from,to,callback) {
+    let that = this;
+    let data = {
+        "url": "http://op.juhe.cn/onebox/exchange/currency",
+        "from": from,
+        "to": to
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
 
 }
 
