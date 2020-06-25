@@ -67,10 +67,7 @@ Page({
       });
     }
 
-    //邮编查询
-    if(this.data.id == 1){
-      
-    }
+    
     
     //成语词典
     if(this.data.id == 3){
@@ -95,10 +92,7 @@ Page({
 
       }
     }
-    //汇率
-    if(this.data.id == 4){
-
-    }
+    
     //手机号
     if(this.data.id == 5){
       wxTool.log('手机号归属地查询日志',e.detail.value);

@@ -18,6 +18,9 @@ page{
   justify-content: space-between;
   align-items: center;
 }
+.hoverClass{
+  background-color: none;
+}
 
 @media (prefers-color-scheme: dark) {
   /* DarkMode 下的样式 start */

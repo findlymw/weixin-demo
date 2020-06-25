@@ -4,7 +4,13 @@
   <view wx:if="{{ item.switch }}" class="toolsView" data-toolsID="{{item.id}}" 
   data-name="{{item.name}}" bindtap="toolsTapHandle">
     <c-icon icon="{{ item.icon?item.icon:'help' }}" color="#ddcc66" size="{{20}}"/>
-     <view>{{item.name}}</view>
+     <view wx:if="{{item.id==1}}">
+      <navigator hover-class="hoverClass"  url="/zippackage/pages/zip/zip">{{item.name}}</navigator>
+     </view>
+     <view wx:elif="{{item.id==4}}">
+      <navigator hover-class="hoverClass" url="/zippackage/pages/zip/zip">{{item.name}}</navigator>
+     </view>
+     <view wx:else>{{item.name}}</view>
      <c-icon icon="arrow" color="#ccc" size="{{20}}"/>
   </view>
    

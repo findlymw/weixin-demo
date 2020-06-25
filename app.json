@@ -15,12 +15,26 @@
       "root": "toolspackage",
       "name": "toolspackage",
       "pages":["pages/toolsall/toolsall"]
+    },
+    {
+      "root": "zippackage",
+      "name": "zippackage",
+      "pages": ["pages/zip/zip"]
+    },
+    {
+      "root": "exchangeratepackage",
+      "name": "exchangeratepackage",
+      "pages": ["pages/exchangerate/exchangerate"]
     }
   ],
   "preloadRule": {
     "pages/loadingpage/loadingpage": {
       "network": "all",
       "packages": ["toolspackage"]
+    },
+    "pages/tools/tools":{
+      "network": "all",
+      "packages": ["zippackage","exchangeratepackage"]
     }
   },
   "lazyCodeLoading": "requiredComponents",
