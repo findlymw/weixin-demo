@@ -208,6 +208,35 @@ let api = {
         callback(res);
     });
   },
+  api_postcode_search_Handler: function (wx,token,pcd,addr,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/postcode/search",
+        "pid": pcd[0],
+        "cid": pcd[1],
+        "did": pcd[2],
+        "q": addr,
+        "page": 1,
+        "pagesize": 20,
+        "dtype": "json"
+
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
+  api_postcode_query_Handler: function (wx,token,zip,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/postcode/query",
+        "postcode": zip,
+        "page": 1,
+        "pagesize": 20,
+        "dtype": "json"
+
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
   api_onebox_exchange_list_Handler: function (wx,token,callback) {
     let that = this;
     let data = {

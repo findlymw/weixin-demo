@@ -1,1 +1,78 @@
 /* zippackage/pages/zip/zip.wxss */
+.zipContainer{
+  display: flex;
+  padding: 30rpx;
+  flex-direction: column;
+}
+.tabBarContainer{
+  display: flex;
+  text-align: center;
+}
+.tabBar{
+  flex:1;
+  color: #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
+  padding: 20rpx;
+}
+
+.tabBarActive{
+  flex:1;
+  color: #bfff00;
+  border-bottom: 1px solid #bfff00;
+  padding: 20rpx;
+}
+
+
+
+
+.zipBlock{
+  margin: 30rpx;
+  flex:1;
+}
+
+.zipToAddrInput{
+  border:1px solid #c7c7c7;
+  border-radius: 10rpx;
+  padding:30rpx;
+}
+
+.chooseAddr {
+  padding: 30rpx;
+  margin: 0 0 30rpx 0;
+  border: 1px solid #c7c7c7;
+  border-radius: 10rpx;
+}
+
+.addrQueryResult{
+  margin: 0 0 30rpx 0;
+}
+
+.addrQueryResultBlock{
+  padding:30rpx;
+}
+.addrQueryResultBlock view{
+  font-size: 40rpx;
+}
+picker {
+ font-size: 33rpx;
+ color: #c7c7c7;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .tabBar{
+    color: #999;
+    border-bottom: 1px solid #333;
+  }
+  .zipToAddrInput{
+    border:1px solid #333;
+  }
+  
+  .chooseAddr {
+    border: 1px solid #333;
+  }
+  .picker{
+    color: #999;
+  }
+  /* DarkMode 下的样式 end */
+}

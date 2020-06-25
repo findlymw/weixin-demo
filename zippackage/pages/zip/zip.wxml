@@ -1,2 +1,43 @@
 <!--zippackage/pages/zip/zip.wxml-->
-<text>zippackage/pages/zip/zip.wxml</text>
+
+<view class="zipContainer">
+
+	<view class="tabBarContainer">
+		<view class="{{tabBar.bar1.active?'tabBarActive':'tabBar'}}" data-bar="1" bindtap="chooseBarHandle">地名查邮编</view>
+		<view class="{{tabBar.bar2.active?'tabBarActive':'tabBar'}}" data-bar="2" bindtap="chooseBarHandle">邮编查地名</view>
+	</view>
+
+
+	<view hidden="{{!tabBar.bar1.active}}" class="zipBlock">
+		<view class="chooseAddr">
+			<picker mode="region" bindchange="bindRegionChange" value="{{detailed}}" custom-item="{{customItem}}" name="detailed">
+				<view class="picker {{clas}}">{{detailed}}</view>
+			</picker>
+		</view>
+		<view>
+			<input class="zipToAddrInput" maxlength="50" placeholder="输入要查询的关键字" 
+      confirm-type="go" bindconfirm="bindconfirmHandle" value="{{inputValue}}"></input>
+		</view>
+	</view>
+
+
+	<!--邮编查询地名-->
+	<view hidden="{{!tabBar.bar2.active}}" class="zipBlock">
+		<input class="zipToAddrInput" maxlength="10" placeholder="输入邮编查询地址"
+			confirm-type="go" bindconfirm="bindconfirmZipToAddrHandle"
+		></input>
+	</view>
+
+	<view class="addrQueryResult">
+		<view wx:if="{{addrResult && addrResult.length > 0}}" wx:for="{{addrResult}}" wx:key="addrResultListKey">
+			<view class="addrQueryResultBlock">
+				<view>{{item.Province?item.Province:''}}  
+							{{item.City?item.City:''}}  
+							{{item.District?item.District:''}}
+				</view>
+				<view>地址：{{item.Address?item.Address:'暂无'}}</view>
+				<view>邮编：{{item.PostNumber?item.PostNumber:'未查询到，请重试'}}</view>
+			</view>
+		</view>
+	</view>
+</view>
