@@ -1,5 +1,6 @@
 // zippackage/pages/zip/zip.js
 let wxTool = require('../../../utils/wxTool.js');
+let api = require('../../../utils/api.js');
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
    */
   data: {
     title:'',
+    citys: {status:false, allData:{}}
   },
 
   /**
@@ -30,7 +32,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let page = this;
+    if(!this.data.citys.status){
+      api.api_postcode_pcd_Handler(wx,
+        getApp().globalData.storageData.apiToken,
+        function(res){
+          wxTool.logDir('邮编查询的城市列表数据查询接口',res);
+          if(res && res.code == 200 && res.result && res.result.result){
+            page.data.citys.status= true;
+            page.data.citys.allData = res.result.result;
+          }
+        }
+      );
+    }
   },
 
   /**

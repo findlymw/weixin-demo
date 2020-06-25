@@ -198,6 +198,25 @@ let api = {
         callback(res);
     });
   },
+  api_postcode_pcd_Handler: function (wx,token,callback) {
+    let data = {
+        "url": "http://v.juhe.cn/postcode/pcd",
+        "dtype": "json"
+
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
+  api_onebox_exchange_list_Handler: function (wx,token,callback) {
+    let that = this;
+    let data = {
+        "url": "http://op.juhe.cn/onebox/exchange/list",
+    };
+    this.api_request(wx,token,data, 'POST', function (res) {
+        callback(res);
+    });
+  },
 
 }
 

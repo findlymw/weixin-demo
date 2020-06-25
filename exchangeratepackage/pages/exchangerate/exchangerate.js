@@ -1,5 +1,6 @@
 // exchangeratepackage/pages/exchangerate/exchangerate.js
 let wxTool = require('../../../utils/wxTool.js');
+let api = require('../../../utils/api.js');
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
    */
   data: {
     title:'',
+    exchangeList:{status:false,allData:{}}
   },
 
   /**
@@ -30,7 +32,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let page = this;
+    if(!this.data.exchangeList.status){
+      api.api_onebox_exchange_list_Handler(wx,
+        getApp().globalData.storageData.apiToken,
+        function(res){
+          wxTool.logDir('货币列表数据查询接口',res);
+          if(res && res.code == 200 && res.result && res.result.result && res.result.result.list){
+            page.data.exchangeList.status= true;
+            page.data.exchangeList.allData = res.result.result.list;
+          }
+        }
+      );
+    }
   },
 
   /**
