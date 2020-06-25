@@ -11,11 +11,29 @@ Page({
   toolsTapHandle: function(e){
     wxTool.logDir('tools tap handle',e);
     wxTool.log('tools tap handle toolsid',e.currentTarget.dataset.toolsid);
-    wx.navigateTo({
-      url: '/toolspackage/pages/toolsall/toolsall?id='
-      +e.currentTarget.dataset.toolsid + '&name='
-      +e.currentTarget.dataset.name,
-    })
+    switch(e.currentTarget.dataset.toolsid){
+      case 1: 
+        wx.navigateTo({
+          url: '/zippackage/pages/zip/zip?id='
+          +e.currentTarget.dataset.toolsid + '&name='
+          +e.currentTarget.dataset.name,
+        })
+        break;
+      case 4: 
+        wx.navigateTo({
+          url: '/exchangeratepackage/pages/exchangerate/exchangerate?id='
+          +e.currentTarget.dataset.toolsid + '&name='
+          +e.currentTarget.dataset.name,
+        })
+        break;
+      default: 
+        wx.navigateTo({
+          url: '/toolspackage/pages/toolsall/toolsall?id='
+          +e.currentTarget.dataset.toolsid + '&name='
+          +e.currentTarget.dataset.name,
+        })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面加载

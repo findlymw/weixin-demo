@@ -1,18 +1,22 @@
 // zippackage/pages/zip/zip.js
+let wxTool = require('../../../utils/wxTool.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wxTool.logDir('subPackage zip page onLoad',options);
+    wx.setNavigationBarTitle({
+      title: options.name,
+    });
   },
 
   /**
