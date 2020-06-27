@@ -2,12 +2,34 @@
 page{
   height: 100%;
 }
-.newsContainer{
+.constellationContainer{
   height: 100%;
+}
+
+
+
+.weui-tabs{
+  width: 100%;
+  height: 100%;
+}
+.weui-tabs-swiper{height: 100%;}
+.weui-tabs-bar__title{
+  margin: 20rpx 10rpx 20rpx 10rpx;
+}
+.tab-content{
+  height: 100%;
+  width: 100%;
+}
+.tab-content image{
+  width: 79rpx;
+  height:79rpx;
+}
+.tab-content .constellationHead{
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-.newsContainer text{
-  font-size: 120rpx;
+  margin: 15rpx 0 30rpx 0;
+  border-top: 1px solid #efefef;
+  padding: 30rpx;
 }

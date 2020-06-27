@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "c-tabs": "../../components/tabs/tabs"
+  },
   "navigationBarTitleText": "星座运势"
 }

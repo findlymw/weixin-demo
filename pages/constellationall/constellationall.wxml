@@ -1,5 +1,21 @@
 <!--pages/news/news.wxml-->
-<view class="newsContainer">
-  <text>星座</text>
- 
+<view class="constellationContainer">
+  <c-tabs
+    tabs="{{tabs}}"
+    activeTab="{{activeTab}}"
+    swiperClass="weui-tabs-swiper"
+    bindtabclick="onTabClick"
+    bindChange="onChange"
+    activeClass="tab-bar-title__selected"
+  >
+
+  <block wx:for="{{tabs}}" wx:key="tabsKey">
+    <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bindtap="handleClick">
+      <view class="constellationHead">
+        <image src="{{item.image}}" mode="widthFix"></image>
+        <view class="item-title">{{item.name}}</view>
+      </view>
+    </view>
+  </block>
+  </c-tabs>
 </view>

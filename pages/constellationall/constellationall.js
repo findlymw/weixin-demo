@@ -5,14 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabs:[],
+    actionTab: 0
   },
-
+  onTabClick(e){
+    const index = e.detail.index;
+    this.setData({
+      activeTab: index
+    });
+  },
+  onChange(e){
+    const index = e.detail.index
+    this.setData({
+      actionTab: index
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      tabs: getApp().globalData.storageData.constellation
+    });
   },
 
   /**
