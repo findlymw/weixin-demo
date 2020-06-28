@@ -46,6 +46,7 @@ Component({
       const index = e.detail.current
       this.setData({activeTab: index})
       this.triggerEvent('change', {index})
+      console.log('++++++++++++++++++');
     }
   }
 })

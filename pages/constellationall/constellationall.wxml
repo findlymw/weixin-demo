@@ -1,21 +1,86 @@
 <!--pages/news/news.wxml-->
 <view class="constellationContainer">
-  <c-tabs
-    tabs="{{tabs}}"
-    activeTab="{{activeTab}}"
-    swiperClass="weui-tabs-swiper"
-    bindtabclick="onTabClick"
-    bindChange="onChange"
-    activeClass="tab-bar-title__selected"
-  >
+	<c-tabs tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper" bindtabclick="onTabClick" bind:change="onChange" activeClass="tab-bar-title__selected">
 
-  <block wx:for="{{tabs}}" wx:key="tabsKey">
-    <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bindtap="handleClick">
-      <view class="constellationHead">
-        <image src="{{item.image}}" mode="widthFix"></image>
-        <view class="item-title">{{item.name}}</view>
-      </view>
-    </view>
-  </block>
-  </c-tabs>
+		<block wx:for="{{tabs}}" wx:key="tabsKey">
+			<view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bindtap="handleClick">
+				<view class="constellationHead">
+					<image src="{{item.image}}" mode="widthFix"></image>
+					<view class="item-title">{{item.name}}</view>
+				</view>
+				<view class="detailContainer">
+        <scroll-view style="height:1000rpx" scroll-y >
+					<view class="constellationDetail">
+						<view class="titleStyle">今日 {{today && today.datetime?today.datetime:''}}</view>
+						<view class="listStyle"><text>综合指数:</text>{{today && today.all?today.all:'暂无'}}</view>
+						<view class="listStyle"><text>幸运色:</text>{{today && today.color?today.color:'暂无'}}</view>
+						<view class="listStyle"><text>健康指数:</text>{{today && today.health?today.health:'暂无'}}</view>
+						<view class="listStyle"><text>爱情指数:</text>{{today && today.love?today.love:'暂无'}}</view>
+						<view class="listStyle"><text>财运指数:</text>{{today && today.money?today.money:'暂无'}}</view>
+						<view class="listStyle"><text>幸运数字:</text>{{today && today.number?today.number:'暂无'}}</view>
+						<view class="listStyle"><text>速配星座:</text>{{today && today.QFriend?today.QFriend:'暂无'}}</view>
+						<view class="listStyle"><text>工作指数:</text>{{today && today.work?today.work:'暂无'}}</view>
+						<view class="listStyle"><text>今日概述:</text>{{today && today.summary?today.summary:'暂无'}}</view>
+					</view>
+
+					<view class="constellationDetail">
+						<view class="titleStyle">明日 {{tomorrow && tomorrow.datetime?tomorrow.datetime:''}}</view>
+						<view class="listStyle"><text>综合指数:</text>{{tomorrow && tomorrow.all?tomorrow.all:'暂无'}}</view>
+						<view class="listStyle"><text>幸运色:</text>{{tomorrow && tomorrow.color?tomorrow.color:'暂无'}}</view>
+						<view class="listStyle"><text>健康指数:</text>{{tomorrow && tomorrow.health?tomorrow.health:'暂无'}}</view>
+						<view class="listStyle"><text>爱情指数:</text>{{tomorrow && tomorrow.love?tomorrow.love:'暂无'}}</view>
+						<view class="listStyle"><text>财运指数:</text>{{tomorrow && tomorrow.money?tomorrow.money:'暂无'}}</view>
+						<view class="listStyle"><text>幸运数字:</text>{{tomorrow && tomorrow.number?tomorrow.number:'暂无'}}</view>
+						<view class="listStyle"><text>速配星座:</text>{{tomorrow && tomorrow.QFriend?tomorrow.QFriend:'暂无'}}</view>
+						<view class="listStyle"><text>工作指数:</text>{{tomorrow && tomorrow.work?tomorrow.work:'暂无'}}</view>
+						<view class="listStyle"><text>今日概述:</text>{{tomorrow && tomorrow.summary?tomorrow.summary:'暂无'}}</view>
+					</view>
+
+					<view class="constellationDetail">
+						<view class="titleStyle">本周 {{week && week.weekth?'(第'+week.weekth+'周)':''}} {{week && week.date?week.date:''}}</view>
+						<view class="listStyle"><text>健康指数:</text>{{week && week.health?week.health:'暂无'}}</view>
+						<view class="listStyle"><text>爱情指数:</text>{{week && week.love?week.love:'暂无'}}</view>
+						<view class="listStyle"><text>财运指数:</text>{{week && week.money?week.money:'暂无'}}</view>
+						<view class="listStyle"><text>工作指数:</text>{{week && week.work?week.work:'暂无'}}</view>
+					</view>
+
+
+					<view class="constellationDetail">
+						<view class="titleStyle">本月 {{month && month.date?month.date:''}}</view>
+						<view class="listStyle"><text>综合运势:</text>{{month && month.all?month.all:'暂无'}}</view>
+						<view class="listStyle"><text>健康指数:</text>{{month && month.health?month.health:'暂无'}}</view>
+						<view class="listStyle"><text>爱情指数:</text>{{month && month.love?month.love:'暂无'}}</view>
+						<view class="listStyle"><text>财运指数:</text>{{month && month.money?month.money:'暂无'}}</view>
+						<view class="listStyle"><text>工作指数:</text>{{month && month.work?month.work:'暂无'}}</view>
+					</view>
+
+					<view class="constellationDetail">
+						<view class="titleStyle">今年 {{year && year.date?year.date:''}}</view>
+						<view class="yearView">
+							<view class="yearTitle">年度密码</view>
+							<view>{{year && year.mima && year.mima.info?year.mima.info:'暂无'}}</view>
+							<view>{{year && year.mima && year.mima.text?year.mima.text:'暂无'}}</view>
+						</view>
+
+						<view class="yearView">
+							<view class="yearTitle">事业运</view>
+							<view>{{year && year.career && year.career?year.career:'暂无'}}</view>
+						</view>
+
+						<view>
+							<view>感情运</view>
+							<view>{{year && year.love && year.love?year.love:'暂无'}}</view>
+						</view>
+
+						<view>
+							<view>财运</view>
+							<view>{{year && year.finance && year.finance?year.finance:'暂无'}}</view>
+						</view>
+					</view>
+          </scroll-view>
+				</view>
+
+			</view>
+		</block>
+	</c-tabs>
 </view>

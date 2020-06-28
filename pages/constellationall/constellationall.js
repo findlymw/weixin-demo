@@ -1,4 +1,6 @@
 // pages/news/news.js
+let wxTool = require('../../utils/wxTool.js');
+let api = require('../../utils/api.js');
 Page({
 
   /**
@@ -6,19 +8,77 @@ Page({
    */
   data: {
     tabs:[],
-    actionTab: 0
+    actionTab: 0,
+    today:{},
+    tomorrow:{},
+    week:{},
+    month:{},
+    year:{}
+  },
+  _constellationQuery(constellationName, time,callback){
+    const apiToken = getApp().globalData.storageData.apiToken;
+    //星座
+    api.api_constellation_getAll_Handler(wx,apiToken,constellationName,time,function(res){
+      wxTool.logDir('constellationall.js 星座 _constellationQuery api_constellation_getAll_Handler',res);
+      if(res && res.code && res.code == 200 && res.result){
+        callback(res.result);
+     }else{
+      callback({});
+     }
+    });
+  },
+  _getConstellationByIndex(index){
+    if(getApp().globalData.storageData.constellation){
+      return getApp().globalData.storageData.constellation[index];
+    }
+  },
+  _getConstellationToData(index){
+    const constellation = this._getConstellationByIndex(index);
+    if(constellation){
+    wxTool.logDir('----onTabClick通过下标获取星座对象',constellation);
+      this._constellationQuery(constellation.name,'today',(res) => {
+        this.setData({
+          today: res
+        });
+        this._constellationQuery(constellation.name,'tomorrow',(res) => {
+          this.setData({
+            tomorrow: res
+          });
+          this._constellationQuery(constellation.name,'week',(res) => {
+            this.setData({
+              week: res
+            });
+            this._constellationQuery(constellation.name,'month',(res) => {
+              this.setData({
+                month: res
+              });
+              this._constellationQuery(constellation.name,'year',(res) => {
+                this.setData({
+                  year: res
+                });
+                wxTool.logDir('------constellation data object',this.data);
+              });
+            });
+          });
+        });
+      });
+    }
   },
   onTabClick(e){
     const index = e.detail.index;
     this.setData({
       activeTab: index
     });
+    this._getConstellationToData(index);
+    
+    
   },
   onChange(e){
     const index = e.detail.index
     this.setData({
-      actionTab: index
+      activeTab: index
     });
+    this._getConstellationToData(index);
   },
   /**
    * 生命周期函数--监听页面加载
@@ -27,6 +87,7 @@ Page({
     this.setData({
       tabs: getApp().globalData.storageData.constellation
     });
+    this._getConstellationToData(0);
   },
 
   /**

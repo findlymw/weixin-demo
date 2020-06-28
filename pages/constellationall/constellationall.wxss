@@ -30,6 +30,41 @@ page{
   align-items: center;
   justify-content: center;
   margin: 15rpx 0 30rpx 0;
-  border-top: 1px solid #efefef;
   padding: 30rpx;
+  box-shadow: 1px 1px 6px #cacaca;
+}
+
+
+.constellationDetail{
+  margin: 5rpx 0 50rpx 0;
+  padding: 0 10rpx 0 10rpx;
+  display: inline-block;
+  background-color: #efefef;
+}
+.titleStyle{
+  font-size: 40rpx;
+  padding:10rpx;
+}
+.listStyle{
+  padding: 20rpx;
+}
+.listStyle text{font-weight: bold;}
+.yearView{
+  margin: 10rpx 0 50rpx 10rpx;
+  
+}
+.yearTitle{
+  font-size: 35rpx;
+  margin: 20rpx 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .tab-content .constellationHead{
+    box-shadow: none;
+  }
+  .constellationDetail{
+    background-color: #2E2D2D;
+  }
+  /* DarkMode 下的样式 end */
 }
